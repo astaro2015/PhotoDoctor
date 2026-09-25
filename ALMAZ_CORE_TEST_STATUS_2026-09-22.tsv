@@ -1,0 +1,14 @@
+0	12	tests/test_core.py::test_black_and_white_clipping
+0	29	tests/test_core.py::test_blur_reduces_sharpness
+0	23	tests/test_core.py::test_noise_increases_noise_proxy
+0	9	tests/test_core.py::test_color_cast_detected
+0	29	tests/test_core.py::test_multiple_resolutions_same_source_are_reasonably_consistent
+0	8	tests/test_core.py::test_image_tone_detects_monochrome
+0	8	tests/test_core.py::test_image_tone_detects_soft_sepia
+0	8	tests/test_core.py::test_image_tone_does_not_call_strong_color_sepia
+0	10	tests/test_core.py::test_analysis_contains_local_contrast_metric
+0	7	tests/test_core.py::test_full_analysis_contains_structured_decision_plan
+0	10	tests/test_core.py::test_analyze_file_adds_recommendation_validation_metric
+0	11	tests/test_core.py::test_analysis_contains_main_subject_metric
+0	10	tests/test_core.py::test_analysis_contains_separate_aesthetic_metric
+0	11	tests/test_core.py::test_analysis_contains_reliability_unknown_guard_metric
