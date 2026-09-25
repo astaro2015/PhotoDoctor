@@ -1,0 +1,52 @@
+Photo Doctor 0.5.3.25 — Build Verification
+Дата: 2026-09-22
+
+База:
+- PhotoDoctor_0.5.3.24_FULL_SOURCE.zip
+- SHA-256 baseline: 940b5f966c7febf4bcc887b3439278e38eddd2972bb877356198e684a06c3afc
+- ZIP integrity baseline: PASS.
+
+Рабочая performance-ветка до очистки релиза:
+- pytest collection: 547 tests.
+- все 61 test-файл запускались отдельными Python-процессами с собственным timeout/exit-code;
+- 547/547 PASS; failures=0; timeout=0;
+- compileall src + tests: PASS;
+- 4/4 независимых 12MP Precise Analyzer runs завершились без product hang >90 s;
+- полный analyze_file() Normal и Precise завершился с Validator.
+
+Release candidate после удаления WIP/perf artifacts и поднятия версии:
+- __version__ = 0.5.3.25;
+- ALGORITHM_VERSION = 0.5.3.25;
+- pytest collection: 547 tests;
+- профильные release tests: 86/86 PASS (7/7 test-файлов);
+- compileall src + tests: PASS;
+- __pycache__/.pytest_cache/*.pyc перед упаковкой: 0;
+- пользовательские JPG/JPEG/WEBP в release tree: 0.
+
+Performance equivalence:
+- White Balance reuse сохраняет прежний WhiteBalanceAdvice при прямой проверке standalone vs precomputed auto-tone profile.
+- Surface новая greedy IoU-дедупликация сохраняет порядок/результат старой scalar реализации.
+- На контрольном 12MP Surface: candidate_count=427, boxes=32, ai_boxes=96 на обоих путях; serialized result SHA совпадает.
+
+Предфинальная упаковочная проверка после распаковки в путь с пробелами:
+- ZIP integrity FULL_SOURCE preverify: PASS;
+- ZIP integrity HOTFIX preverify: PASS;
+- SOURCE_SHA256SUMS из распакованного FULL_SOURCE: 218/218 PASS;
+- версия из распакованного дерева: 0.5.3.25 / ALGORITHM_VERSION 0.5.3.25;
+- HOTFIX поверх чистого 0.5.3.24 даёт то же содержимое FULL_SOURCE: PASS;
+- compileall из распакованного FULL_SOURCE: PASS;
+- pytest collection из распакованного FULL_SOURCE: 547;
+- профильный pytest из распакованного FULL_SOURCE: 86/86 PASS.
+
+Среда проверки:
+- Linux/KVM, 5 видимых vCPU, cgroup CPU quota ≈4 CPU, memory.max 4 GiB.
+- Python контейнера: 3.13.5. Проект декларирует Python >=3.12,<3.13, поэтому Linux-контейнерные проверки используются для regression/performance continuity, но НЕ заменяют Windows/Python 3.12 EXE-сборку.
+- Windows EXE в этом контейнере не собирался.
+
+Проверка окончательных ZIP выполняется после фиксации этого файла, чтобы сам отчёт не изменял уже проверенные байты. Финальные SHA-256, повторная распаковка, internal-manifest, HOTFIX byte-match и smoke/profile results фиксируются во внешнем `PhotoDoctor_0.5.3.25_FINAL_VERIFICATION.txt`, поставляемом рядом с архивами.
+
+Финальная перепаковка 2026-09-22:
+- при повторной внешней проверке первого FULL_SOURCE ZIP обнаружены `__pycache__`, `.pyc` и `.pytest_cache`, появившиеся после release-тестов;
+- этот ZIP признан НЕ финальным и пересобирается после повторной очистки дерева;
+- HOTFIX на той проверке кэшей не содержал;
+- финальные SHA и повторная проверка чистоты фиксируются только после новой упаковки.

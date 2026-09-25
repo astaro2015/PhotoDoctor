@@ -1,0 +1,15 @@
+Photo Doctor 0.5.3.26
+
+Что изменилось
+- Добавлено открытие WebP, HEIC/HEIF/HIF, TIFF/TIF, BMP, AVIF, JPE и JFIF.
+- JPEG/JPG и PNG остаются поддержанными как раньше.
+- Одиночное открытие и пакетный анализ используют один список форматов.
+- HEIC/HEIF: pillow-heif >=1.7,<2; зависимость включена в установку и PyInstaller spec.
+- AVIF: Pillow >=11.3,<13.
+- EXIF orientation, ICC→sRGB и извлечение метаданных проходят через существующий безопасный pipeline.
+- Сохранение копии намеренно остаётся только PNG/JPEG.
+- RAW, GIF и JPEG XL пока не включены.
+
+Проверки
+- Regression-тесты добавлены для extended input formats, batch discovery, HEIF dependency contract и запрета расширения output formats.
+- HEIC runtime decode требует установленный pillow-heif; в Linux/KVM контейнере пакет нельзя было скачать из-за отсутствия сетевого доступа, поэтому фактический decode HEIC должен дополнительно пройти на Windows build.

@@ -1,0 +1,42 @@
+Photo Doctor 0.5.3.24 — Build Verification
+Дата финальной упаковки: 2026-09-22
+
+Рабочее дерево:
+- pytest collection: 529 tests.
+- полный pytest: 529/529 PASS.
+  Монолитный запуск упирался в лимит среды, поэтому все 58 test-файлов были завершены независимыми пачками; test_core.py дополнительно разделён, все 14/14 PASS.
+- compileall src + tests: PASS.
+
+Проверенные направления 0.5.3.24:
+- структурная карта резкости и защита от noise-as-sharpness;
+- local contrast structural gate + noise veto;
+- unique-area summary для tone/contrast;
+- bright != clipped_highlight;
+- Spatial WB/Color v1;
+- spatial-coherence gate против object-colour-as-mixed-light;
+- строгий hybrid-only gate без нейтральных опор;
+- face/skin/eye protection для spatial WB даже под сильным cast;
+- WB Validator fallback на внутреннюю часть лица;
+- UI без дублирующего столбца `Совет ИИ`.
+
+Проверка предварительно упакованных байтов перед финальной пересборкой документации:
+- ZIP integrity FULL_SOURCE: PASS;
+- ZIP integrity HOTFIX: PASS;
+- FULL_SOURCE распакован в путь с пробелами: PASS;
+- SOURCE_SHA256SUMS из распакованного FULL_SOURCE: 209/209 PASS;
+- профильный pytest из распакованного FULL_SOURCE: 194/194 PASS;
+- compileall из распакованного FULL_SOURCE: PASS;
+- HOTFIX наложен на чистый 0.5.3.23 FULL_SOURCE: PASS;
+- дерево после HOTFIX побайтово совпало с FULL_SOURCE: 210/210 файлов PASS;
+- профильный pytest из дерева после HOTFIX: 194/194 PASS.
+
+Финальная проверка окончательных архивов после записи этого отчёта:
+- ZIP integrity FULL_SOURCE: PASS;
+- ZIP integrity HOTFIX: PASS;
+- распаковка окончательного FULL_SOURCE в новый путь с пробелами: PASS;
+- SOURCE_SHA256SUMS окончательного FULL_SOURCE: 209/209 PASS;
+- профильный pytest из окончательного распакованного FULL_SOURCE: 194/194 PASS;
+- HOTFIX поверх чистого 0.5.3.23: PASS;
+- окончательный HOTFIX tree match с FULL_SOURCE: 210/210 файлов PASS;
+- __pycache__/.pytest_cache/*.pyc: 0;
+- пользовательские JPG/JPEG/WEBP в release tree: 0.

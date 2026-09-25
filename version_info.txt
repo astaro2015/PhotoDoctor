@@ -1,0 +1,32 @@
+# -*- coding: utf-8 -*-
+VSVersionInfo(
+  ffi=FixedFileInfo(
+    filevers=(0, 5, 16, 0),
+    prodvers=(0, 5, 16, 0),
+    mask=0x3f,
+    flags=0x0,
+    OS=0x40004,
+    fileType=0x1,
+    subtype=0x0,
+    date=(0, 0)
+  ),
+  kids=[
+    StringFileInfo([
+      StringTable(
+        u'040904B0',
+        [
+          StringStruct(u'CompanyName', u'Photo Doctor'),
+          StringStruct(u'FileDescription', u'Photo Doctor - локальная диагностика и безопасное улучшение фотографий'),
+          StringStruct(u'FileVersion', u'0.5.16'),
+          StringStruct(u'InternalName', u'PhotoDoctor'),
+          StringStruct(u'LegalCopyright', u'Copyright © 2026 Привалов Олег'),
+          StringStruct(u'OriginalFilename', u'PhotoDoctor.exe'),
+          StringStruct(u'ProductName', u'Photo Doctor'),
+          StringStruct(u'ProductVersion', u'0.5.16'),
+          StringStruct(u'Comments', u'Автор проекта: Привалов Олег')
+        ]
+      )
+    ]),
+    VarFileInfo([VarStruct(u'Translation', [1033, 1200])])
+  ]
+)

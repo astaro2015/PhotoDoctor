@@ -1,0 +1,30 @@
+Photo Doctor 0.5.3.16 — verification
+Дата: 2026-09-21
+
+Исходная база
+-------------
+Photo Doctor 0.5.3.15 FULL SOURCE.
+
+Версии
+------
+- pyproject.toml: 0.5.3.16
+- src/photodoctor/__init__.py: 0.5.3.16
+- src/photodoctor/core/versioning.py ALGORITHM_VERSION: 0.5.3.16
+- src/photodoctor/core/versioning.py DECISION_ENGINE_VERSION: 0.1.5
+- version_info.txt FileVersion/ProductVersion: 0.5.3.16
+
+Тесты
+-----
+Полный набор проверен независимыми группами из-за внешнего timeout единого запуска:
+- группа 1: 103 PASS
+- группа 2: 160 PASS
+- группа 3: 118 PASS
+- группа 4: 74 PASS
+ИТОГО: 455/455 PASS
+
+Отдельные целевые регрессии red-eye + GUI-плана: 96/96 PASS.
+
+Ограничение среды
+-----------------
+Это Linux-контейнер; нативный Windows GUI-smoke и сборка EXE здесь не выполнялись.
+Исходный Python-код, source-level GUI regressions, алгоритмические и packaging tests проверены.

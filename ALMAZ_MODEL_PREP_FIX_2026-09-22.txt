@@ -1,0 +1,20 @@
+Photo Doctor — ALMAZ model preparation fix
+Date: 2026-09-22
+
+What changed
+- The restoration codename is now ALMAZ everywhere: GUI, source modules, tools, tests, logs and candidate IDs.
+- Model preparation no longer immediately fails when export dependencies are missing.
+- ALMAZ preparation now checks the current Python environment and installs only missing export dependencies into the same environment:
+  * PyTorch
+  * ONNX
+  * ONNX Runtime (only if no ORT provider package is already importable)
+  * timm (SwinIR x2 only)
+- Existing GPU/DirectML/OpenVINO ONNX Runtime installations are preserved because all expose the same onnxruntime module.
+- On preparation failure, the GUI now shows the tail of the real process log instead of only "exit code 1".
+- pyproject.toml includes an optional almaz-build dependency group for manual/pre-provisioned environments.
+
+Verification
+- Full suite: 634 tests, 77/77 test files PASS, exit 0, watchdog timeouts 0.
+- ALMAZ-focused broad regression: 221/221 PASS.
+- compileall: PASS.
+- Search for the previous codename: 0 text refs, 0 filenames before packaging.

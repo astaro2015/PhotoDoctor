@@ -1,0 +1,5 @@
+Photo Doctor
+
+Автор проекта: Привалов Олег
+AI-помощники разработки: ChatGPT / Codex
+Локальный ИИ Photo Doctor: Astra

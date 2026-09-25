@@ -1,0 +1,38 @@
+Photo Doctor 0.5.3.15 hotfix manifest
+Base: 0.5.3.14
+
+Changed product/source files:
+README.md
+pyproject.toml
+version_info.txt
+SOURCE_SHA256SUMS.txt
+src/photodoctor/__init__.py
+src/photodoctor/ai/executor.py
+src/photodoctor/ai/manager.py
+src/photodoctor/ai/router.py
+src/photodoctor/core/ai_crosscheck.py
+src/photodoctor/core/ai_runtime.py
+src/photodoctor/core/feedback_export.py
+src/photodoctor/core/training_export.py
+src/photodoctor/core/validator.py
+src/photodoctor/core/versioning.py
+src/photodoctor/gui/ai_presentation.py
+src/photodoctor/gui/localization.py
+src/photodoctor/gui/main_window.py
+
+Regression tests changed/added:
+tests/test_ai_crosscheck.py
+tests/test_ai_executor.py
+tests/test_ai_manager_router.py
+tests/test_ai_presentation.py
+tests/test_ai_runtime.py
+tests/test_feedback_export.py
+tests/test_gui_layout_source.py
+tests/test_packaging_files.py
+tests/test_training_export.py
+tests/test_validator.py
+
+Release metadata:
+RELEASE_NOTES_0.5.3.15.txt
+BUILD_VERIFICATION_0.5.3.15.txt
+HOTFIX_MANIFEST_0.5.3.15.txt

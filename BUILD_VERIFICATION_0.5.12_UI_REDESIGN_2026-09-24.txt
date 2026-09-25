@@ -1,0 +1,23 @@
+Photo Doctor 0.5.12 — UI Redesign
+Date: 2026-09-24
+
+Base: 0.5.11 Correction Order Final
+Analysis algorithm cache key: 0.5.10-surface-v9-maximum (intentionally unchanged)
+
+UI changes verified:
+- Top-level navigation: Обзор / Исправления / Дефекты / Лица / Диагностика.
+- Папка / Серии and folder-analysis action removed from user navigation.
+- Batch pause/cancel hidden from normal UI; internal batch engine retained for cache/library compatibility.
+- Diagnostics nests: Метрики / Гистограмма / Рекомендации / ALMAZ / ИИ / Технические данные.
+- Overview long diagnostics collapsed by default.
+- Corrections main table hides technical columns 4/6/7/8; scores remain available in selected-row details.
+- Surface remains manual-only via Дефекты.
+- Author: Привалов Олег. Previous author alias is absent from the deliverable text tree.
+
+Regression before packaging:
+- Full test suite: 84/84 test files PASS, 716 tests PASS, 0 failures.
+- Final author/packaging/UI/localization subset: 111/111 PASS.
+- Candidate ZIP internal SHA verification: 345/345 PASS.
+- Candidate unpacked smoke: 133/133 PASS.
+- Candidate compileall from path with spaces: PASS.
+- Candidate ZIP cache/bytecode entries: 0.

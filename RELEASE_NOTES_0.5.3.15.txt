@@ -1,0 +1,25 @@
+Photo Doctor 0.5.3.15
+
+AI / safety audit release.
+
+Исправлено:
+1. Surface AI label mismatch: natural_detail корректно противоречит классическому дефект-кандидату.
+2. Advisory-only соблюдается: AI сам не включает surface-кандидаты в «Лечить».
+3. «Не уверен» снимает пользовательское разрешение «Лечить».
+4. scalar_0_1 ONNX больше не показывает выдуманные 100% confidence.
+5. Неполный native AI batch становится partial_error с ошибкой для отсутствующего региона.
+6. NaN/Inf/повреждённая геометрия AI/export изолируется.
+7. Некорректная явно заданная локальная область fail-closed и не превращается в глобальную коррекцию.
+8. Parameter Recommender v2 получает WB Advisor + neutral balance features; UI маркировка исправлена на v2.
+9. AI Router предпочитает готовую модель среди нескольких моделей одной задачи.
+10. ONNX preflight cache учитывает fingerprint контракта, а не только SHA-256 модели.
+11. Training readiness учитывает независимые source groups и ограничивает долю одного источника.
+12. Ошибки Batch/Series workers больше не оставляют GUI в ложном состоянии занятости.
+13. Ошибки чтения manual overrides/записи analysis cache показываются как предупреждение, а не проглатываются.
+
+Обновлённые версии компонентов:
+- app / algorithm: 0.5.3.15
+- validator: 0.1.6
+- AI runtime: 0.1.1
+- AI crosscheck: 0.1.1
+- AI router: 0.1.1

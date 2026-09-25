@@ -1,0 +1,45 @@
+Photo Doctor 0.5.3.21 — BUILD VERIFICATION
+
+Source tree verification
+- Version: 0.5.3.21
+- Collected tests: 496
+- Full pytest suite: 496/496 PASS (all 58 test files covered; independent groups used because long combined pytest processes can time out in this container)
+- Target spatial sharpness/noise + Decision Engine + Validator + GUI/presentation + reliability/precision suite: 161/161 PASS
+- all 14 test_core cases: PASS (heavy resolution-consistency case run independently)
+- compileall src/tests/tools: PASS
+- user supplied JPG/JPEG/WEBP files in release tree before packaging: 0
+
+Spatial Sharpness / Denoise v1
+- Spatial sharpness candidate: spatial_sharpness_v1
+- Spatial denoise candidate: spatial_denoise_v1
+- Local noise tile sigma is retained without changing the historical global median score formula
+- Multiple neighbouring measurements are required; a lone noisy/soft tile cannot become an automatic spatial correction
+- Sharpness uses structured-edge gating plus semantic protection
+- Denoise uses texture/edge gating plus stronger eye and face protection
+- Confirmed noise vetoes sharpening in the same/adjacent region
+- Validator checks target improvement and mean change outside the auto-mask
+- Decision Engine only grants automatic Fix status under the stricter confidence/coverage gates; faces remain conservative Review for these paths
+
+Synthetic control checks
+- Locally blurred checker target: spatial_sharpness_v1 generated, Validator technical PASS, target region changed while clean background stayed effectively unchanged
+- Locally noisy flat target: spatial_denoise_v1 generated, Validator technical PASS, local standard deviation decreased while clean background stayed byte-stable/effectively unchanged
+- Local noisy patch may leave robust global noise score high/clean; spatial cells still preserve the local evidence
+- Noise/sharpness conflict test: confirmed noisy cells suppress spatial sharpening in the same region
+
+Environment limitation
+- Windows/PySide6 click-through GUI smoke was not executed in this Linux container. Source-level GUI tests passed.
+
+Release-tree sanitation before packaging
+- __pycache__ directories: 0
+- .pytest_cache directories: 0
+- *.pyc/*.pyo files: 0
+- user JPG/JPEG/WEBP files: 0
+- SOURCE_SHA256SUMS in preliminary archive: 203/203 PASS after extraction.
+
+
+Preliminary artifact re-extraction test
+- FULL_SOURCE preliminary ZIP integrity: PASS
+- extracted into path containing spaces: PASS
+- extracted SOURCE_SHA256SUMS: 203/203 PASS
+- extracted spatial maps + Decision Engine + Validator + packaging + GUI/presentation + reliability/precision critical suite: 181/181 PASS
+- no code changes were made after these extracted critical tests; only this verification text and the resulting SOURCE_SHA256SUMS are finalised before the final ZIP.

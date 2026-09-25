@@ -1,0 +1,32 @@
+Photo Doctor 0.5.3.20 — BUILD VERIFICATION
+
+Source tree verification
+- Version: 0.5.3.20
+- Full pytest suite: 491/491 PASS (run in independent groups due shell timeout on heavy test_core.py)
+- Target Local Correction Planner / Validator / Decision Engine / GUI / packaging suite: 135/135 PASS
+- compileall: PASS
+- cache/temp cleanup: PASS
+- user supplied JPG/JPEG/WEBP files in release tree: 0
+
+Local Correction Planner v1
+- Spatial exposure candidate: spatial_exposure_v1
+- Spatial contrast candidate: spatial_contrast_v1
+- Overlapping-cell consensus required; a lone tile cannot trigger a spatial correction
+- Highlight protection: enabled for local exposure
+- Validator checks target improvement, clipping regressions and change outside the auto-mask
+- Manual region/main-subject selection further restricts the automatic mask
+
+Real-pipeline control checks (control photos are NOT bundled)
+- Grandmother.jpg, Normal: local exposure coverage 17.7%, technical PASS; local contrast coverage 13.2%, technical PASS
+- clean advertising portrait, Normal: exposure spatial candidate rejected by Validator; local contrast spatial candidate technical PASS
+
+Artifact re-extraction test
+- FULL_SOURCE ZIP integrity: PASS
+- extracted into a path containing spaces: PASS
+- extracted SOURCE_SHA256SUMS: 200/200 PASS
+- extracted target Local Correction / Validator / Decision / GUI / packaging suite: 135/135 PASS
+- additional broad extracted test groups and all 14 test_core cases: PASS before the container became too slow for a second complete 491-test rerun
+- the complete 491/491 result above is from the final code tree before packaging; code was not modified after it
+
+Environment limitation
+- Windows/PySide6 click-through GUI smoke was not executed in this Linux container. Source-level GUI tests passed.

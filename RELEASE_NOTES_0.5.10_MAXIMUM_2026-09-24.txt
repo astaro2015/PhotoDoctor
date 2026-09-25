@@ -1,0 +1,55 @@
+Photo Doctor 0.5.10 — MAXIMUM
+Date: 2026-09-24
+
+Main changes
+============
+
+1. Fourth precision mode renamed to "Максимальный"
+- Public GUI/CLI profile key: `maximum`, label "Максимальный".
+- Legacy `ideal` / `идеально` remain accepted only as compatibility aliases for old settings/scripts.
+- Fast / Normal / Precise are unchanged.
+
+2. Maximum now uses a materially denser spatial decomposition
+- The first Maximum draft (~21.9k local windows on 4K) was intentionally deepened again.
+- Final 4K local-map budget is ~42,928 overlapping measurements across local sharpness, tone and contrast.
+- On the archival reference 479x781 image Maximum uses ~9,033 map cells (3375 + 2829 + 2829), versus ~1,086 in Precise and ~2,333 in the old 0.5.9 Ideal mode.
+- Scalar quality scores remain calibrated on stable summary windows; the extra cells improve localisation rather than silently changing quality thresholds.
+
+3. Maximum Surface search is substantially fuller
+- Surface V9 remains additive: proven Precise geometry is retained and deeper Maximum candidates are merged on top.
+- Maximum also runs two independent local-normalisation proposal passes (different CLAHE grids) to expose faint scratches/cracks under broad illumination gradients and short broken damage fragments.
+- Visible/deep Surface budgets are 256/320 in Maximum.
+- Native Surface AI budget is raised so the full Maximum candidate pool can be reviewed instead of leaving late candidates as "unprocessed".
+- On the archival reference: 232 Surface candidates, 232 AI-refined, 0 unprocessed.
+
+4. Surface repair remains strictly manual-only
+- Search can be deliberately sensitive because it is not allowed to repair by itself.
+- Validator keeps `accepted=False` and `auto_eligible=False` for Surface.
+- No repair trial/inpaint is run during ordinary analysis; it is deferred until the user explicitly selects Defects rows.
+- Surface history/convergence diagnostics are preserved without modifying the photo.
+
+5. Result tab remains read-only
+- The first/result tab contains only the correction summary; no user-selectable correction checkboxes are shown there.
+- Correction choices live in Plan and specialised tabs; Surface treatment is chosen on Defects.
+
+Runtime reference
+=================
+Same archival regression image, separate processes on the current environment:
+- Precise: ~5.62 s, 61 Surface candidates.
+- 0.5.9 old Ideal: ~10.75 s, 76 Surface candidates.
+- 0.5.10 Maximum: ~20.57 s, 232 Surface candidates, 0 unprocessed.
+- Maximum is therefore ~3.66x Precise and ~1.91x the old fourth mode on this image.
+
+The intentionally rejected draft exceeded 2 minutes on the same small portrait because face detection was brute-forced across too many near-duplicate rotations. That was removed: the extra Maximum budget is spent primarily on spatial localisation and Surface defect search, not redundant face scans.
+
+Validation
+==========
+- Full source suite: 83/83 test files PASS.
+- Total source tests: 710 PASS, 0 failures.
+- Maximum/precision, Surface manual-only, history, preview cache, GUI, packaging, ALMAZ, restoration and Validator suites all pass.
+
+Versions
+========
+Application: 0.5.10
+Algorithm cache key: 0.5.10-surface-v9-maximum
+Validator: 0.2.2

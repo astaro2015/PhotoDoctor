@@ -1,0 +1,43 @@
+Photo Doctor 0.5.8 — build verification
+
+STATUS: PASS
+
+Version targets:
+- photodoctor.__version__ = 0.5.8
+- ALGORITHM_VERSION = 0.5.8-surface-v8
+- pyproject.toml = 0.5.8
+- Windows version resource = 0.5.8
+- Surface = V8 (quality thresholds/candidate limits unchanged by this performance release)
+- VALIDATOR_VERSION = 0.2.2
+
+Final source regression:
+- 83 / 83 test files PASS
+- 702 tests PASS
+- 0 failures
+- resumable per-file log: FULL_TEST_0.5.8_FINAL.log
+
+Quality-equivalence audit:
+- archival user-reference image: Normal + Precise
+- 4K upscaled reference
+- low-contrast gradient/lines
+- deterministic noise
+- heavy fabric-like texture
+- small image
+- Surface repair masks and healed RGB at multiple strengths
+- no changed decision/status/candidate/strength; only documented auxiliary float drift <= ~2.3e-7 in local-contrast internals
+
+Performance/stability audit:
+- current 4K Normal reference: 19.64 s baseline -> 16.79 s optimized in adjacent clean processes (~14.5% in that pair; repeated runs indicate roughly 14–20%)
+- cached GUI open of unchanged 4K JPEG: ~0.073 s median
+- 100-file cached batch rescan: ~0.008 s at batch-cache scan level
+- repeated synthetic batches reached an RSS plateau after warm-up; no monotonic per-file leak observed
+- external model install/remove/replace invalidates persistent analysis cache, including sampled-content detection for same-size/same-mtime replacement
+
+Clean archive candidate verification:
+- internal manifest: 322 / 322 PASS
+- archive contained 0 __pycache__, 0 .pytest_cache, 0 .pyc/.pyo
+- import from unpacked path with spaces: 0.5.8 / 0.5.8-surface-v8 / Validator 0.2.2
+- unpacked targeted smoke: 165 / 165 PASS
+- compileall from unpacked path with spaces: PASS
+
+After this record was written only documentation/manifests are repacked; application/test code is frozen.

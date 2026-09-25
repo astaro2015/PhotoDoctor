@@ -1,0 +1,5 @@
+Photo Doctor 0.5.3.8
+Verification status: PASS
+Full pytest suite: 407/407 passed
+Red-eye focused suite: 59/59 passed
+Key red-eye checks: normalized ROI coordinates, catchlight preservation, G/B preservation, no skin spill, normal-eye no-op, strength monotonicity.

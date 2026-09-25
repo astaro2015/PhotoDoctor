@@ -1,0 +1,13 @@
+# DEV SESSION 0.5.11 CORRECTION ORDER
+- Base: 0.5.10 Maximum / Surface V9 manual-only
+- Goal: correct deterministic correction order; preserve algorithms/UI otherwise.
+- Start: 2026-09-24
+- Implemented deterministic structure-first correction order in validator.apply_selected_preview.
+- Added PREVIEW_ACTION_ORDER and candidate-specific ALMAZ stage overrides.
+- Targeted order tests: 29/29 PASS.
+- App version bumped to 0.5.11; ALGORITHM_VERSION intentionally remains 0.5.10-surface-v9-maximum because image analysis itself is unchanged, preserving persistent analysis cache.
+- Full regression: 84/84 test files PASS, 713 tests PASS.
+- Final execution order: Surface -> Red-eye -> JPEG Recovery -> Denoise -> Deblur -> Halo cleanup -> White balance -> Auto tone/exposure -> Contrast -> Deband/posterization -> SR x2 -> Sharpness.
+- UI table order does not control execution order.
+- ALMAZ candidate identity overrides legacy action bucket so upgraded JPEG/Denoise/Deblur still execute at their structural stages.
+- Candidate ZIP: internal SHA 339/339 PASS; extracted smoke 99/99 PASS; compileall PASS; no cache/pyc entries in ZIP.

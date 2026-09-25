@@ -1,0 +1,38 @@
+Photo Doctor 0.5.3.17 — verification
+Дата: 2026-09-21
+
+Исходная база
+-------------
+Photo Doctor 0.5.3.16 FULL SOURCE.
+
+Версии
+------
+- pyproject.toml: 0.5.3.17
+- src/photodoctor/__init__.py: 0.5.3.17
+- src/photodoctor/core/versioning.py ALGORITHM_VERSION: 0.5.3.17
+- src/photodoctor/core/versioning.py DECISION_ENGINE_VERSION: 0.1.5
+- src/photodoctor/core/versioning.py VALIDATOR_VERSION: 0.1.6
+- red-eye detector: eye_roi_red_reflex_v6_multilevel_confirmation
+- version_info.txt FileVersion/ProductVersion: 0.5.3.17
+
+Тесты
+-----
+Полный набор проверен независимыми группами из-за внешнего timeout единого запуска:
+- группа 1: 89 PASS
+- test_core.py: 14 PASS (7 + 7)
+- группа 2: 184 PASS
+- группа 3: 174 PASS
+ИТОГО: 461/461 PASS
+
+Целевые проверки
+----------------
+- red-eye v6: обычный пользовательский кадр без red-eye -> 0 подозрительных глаз в Fast/Normal/Precise;
+- regression: одиночный тёплый patch в geometry fallback отвергается;
+- regression: синтетическая binocular red-eye пара через geometry fallback подтверждается;
+- режим «Точно»: глубокая ветка до 4096 px для локальных задач;
+- benchmark 24 Мп (6000x4000) в текущем Linux-контейнере: около 26.55 с для полного Precise analysis.
+
+Ограничение среды
+-----------------
+Это Linux-контейнер; нативный Windows GUI-smoke и сборка EXE здесь не выполнялись.
+Исходный Python-код, source-level GUI regressions, алгоритмические, packaging и path-with-spaces проверки выполняются перед упаковкой.

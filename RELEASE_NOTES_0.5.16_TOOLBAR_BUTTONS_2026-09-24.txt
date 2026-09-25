@@ -1,0 +1,13 @@
+Photo Doctor 0.5.16
+
+Исправление верхней панели:
+- «Открыть» теперь такая же QPushButton, как «Сохранить» и «Предпросмотр»;
+- подпись «Открыть» больше не исчезает из-за icon-only режима QToolBar/QAction;
+- Open + Save остаются рядом слева, Preview — справа;
+- иконки и короткие подписи сохранены;
+- логика анализа, исправлений, ALMAZ и Validator не менялась;
+- ALGORITHM_VERSION остаётся 0.5.10-surface-v9-maximum.
+
+Проверки:
+- 722/722 tests PASS;
+- compileall src + tests PASS.

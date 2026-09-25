@@ -1,0 +1,16 @@
+Photo Doctor 0.5.3 — тестовая сборочная ветка
+
+Основные изменения:
+- Parameter Recommender v2 без текстовой утечки archival;
+- schema 8, строгая изоляция v1/v2 feedback;
+- более безопасная персонализация;
+- исправлен профиль CPU без SMT;
+- автор проекта: Привалов Олег;
+- новая иконка Photo Doctor;
+- меню «Справка → О программе»;
+- Windows version metadata для PhotoDoctor.exe;
+- 379 тестов проекта собраны и пройдены по модулям.
+
+Примечание по GUI smoke-test в среде сборки ассистента:
+PySide6 в Linux-контейнере не установлен, поэтому окно здесь не запускалось.
+На Windows START_PhotoDoctor.bat устанавливает PySide6 из requirements-user.txt.

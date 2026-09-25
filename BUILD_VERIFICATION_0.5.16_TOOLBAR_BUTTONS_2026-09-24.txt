@@ -1,0 +1,29 @@
+Photo Doctor 0.5.16 — Build Verification
+Дата: 2026-09-24
+
+База:
+- PhotoDoctor 0.5.15 TABLES_TOOLBAR FINAL.
+
+Изменения:
+- Open QAction заменён на QPushButton;
+- Open / Save / Preview имеют единый тип виджета: QPushButton;
+- текст «Открыть» всегда показывается рядом с иконкой;
+- состояния блокировки Open во время анализа/ALMAZ переведены на open_file_btn;
+- pipeline / ALMAZ / Validator / safety gates не менялись;
+- ALGORITHM_VERSION сохранён: 0.5.10-surface-v9-maximum.
+
+Проверки рабочего дерева:
+- compileall src + tests: PASS
+- toolbar/preview/packaging: 128/128 PASS
+- полный suite независимыми пакетами: 722/722 PASS
+  - 105 PASS
+  - 71 PASS
+  - 186 PASS
+  - 59 PASS
+  - 55 PASS
+  - 109 PASS
+  - 137 PASS
+
+Версия:
+- package / pyproject / Windows metadata: 0.5.16
+- author: Привалов Олег

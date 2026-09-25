@@ -1,0 +1,7 @@
+Photo Doctor 0.5.3.6 build verification
+
+- Startup fix for early Qt eventFilter events.
+- ImageView state is initialized before installEventFilter().
+- eventFilter uses _event_filter_ready construction barrier.
+- Regression test enumerates direct private state reads from eventFilter.
+- Version resources and packaging metadata updated to 0.5.3.6.

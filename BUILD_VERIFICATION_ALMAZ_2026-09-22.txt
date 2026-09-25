@@ -1,0 +1,14 @@
+Photo Doctor ALMAZ build verification
+
+Full test suite: PASS
+Collected tests: 634
+Test files: 77/77 PASS
+Runner exit: 0
+Watchdog timeouts: 0
+Focused ALMAZ/GUI/Validator/Packaging regression: 221/221 PASS
+compileall src/tools/tests: PASS
+Previous-codename references: 0
+Previous-codename filenames: 0
+
+Primary bug fixed:
+All model preparation actions could terminate with code 1 when conversion dependencies were not present. Preparation now bootstraps only the missing export dependencies in the active Python/.venv and surfaces the real log tail on failure.

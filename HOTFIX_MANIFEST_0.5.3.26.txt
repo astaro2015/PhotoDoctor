@@ -1,0 +1,33 @@
+Photo Doctor 0.5.3.26 HOTFIX from 0.5.3.25
+Changed files: 18
+Added files: 5
+Removed files: 0
+
+[CHANGED]
+PhotoDoctor.spec
+README.md
+SOURCE_SHA256SUMS.txt
+pyproject.toml
+scripts/verify_env.py
+src/photodoctor/__init__.py
+src/photodoctor/cli.py
+src/photodoctor/core/batch.py
+src/photodoctor/core/exporter.py
+src/photodoctor/core/loader.py
+src/photodoctor/core/versioning.py
+src/photodoctor/gui/main_window.py
+tests/test_database_batch.py
+tests/test_exporter.py
+tests/test_input_pipeline.py
+tests/test_packaging_files.py
+tests/test_russian_ui_localization.py
+version_info.txt
+
+[ADDED]
+BUILD_VERIFICATION_0.5.3.26.txt
+CHANGED_FILES_0.5.3.26.txt
+HOTFIX_MANIFEST_0.5.3.26.txt
+RELEASE_NOTES_0.5.3.26.txt
+src/photodoctor/core/image_formats.py
+
+[REMOVED]

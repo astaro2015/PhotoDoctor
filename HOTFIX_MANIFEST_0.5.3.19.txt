@@ -1,0 +1,42 @@
+Photo Doctor 0.5.3.19 HOTFIX
+Base: 0.5.3.18 FULL_SOURCE
+Target: 0.5.3.19
+
+Changed files: 20
+README.md
+SOURCE_SHA256SUMS.txt
+pyproject.toml
+src/photodoctor/__init__.py
+src/photodoctor/ai/catalog.py
+src/photodoctor/ai/router.py
+src/photodoctor/core/ai_crosscheck.py
+src/photodoctor/core/ai_runtime.py
+src/photodoctor/core/service.py
+src/photodoctor/core/surface_refinement.py
+src/photodoctor/core/versioning.py
+src/photodoctor/gui/localization.py
+src/photodoctor/gui/main_window.py
+tests/test_ai_manager_router.py
+tests/test_ai_runtime.py
+tests/test_gui_layout_source.py
+tests/test_packaging_files.py
+tests/test_russian_ui_localization.py
+tests/test_surface_refinement.py
+version_info.txt
+
+New files: 12
+BUILD_VERIFICATION_0.5.3.19.txt
+HOTFIX_MANIFEST_0.5.3.19.txt
+RELEASE_NOTES_0.5.3.19.txt
+src/photodoctor/ai/models/native_surface_context_meta_v2.metrics.json
+src/photodoctor/ai/models/native_surface_context_meta_v2.npz
+src/photodoctor/ai/models/native_surface_verifier_v2.npz
+src/photodoctor/ai/native_surface_context_meta_v2.py
+src/photodoctor/ai/native_surface_verifier_v2.py
+tests/test_surface_context_meta_v2.py
+tools/build_surface_v2_private_dataset.py
+tools/train_surface_context_meta_v2.py
+tools/train_surface_verifier_v2_segmentation.py
+
+Deleted files: 0
+(none)

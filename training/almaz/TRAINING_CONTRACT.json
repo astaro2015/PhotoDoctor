@@ -1,0 +1,52 @@
+{
+  "format": 1,
+  "name": "Photo Doctor ALMAZ training contract",
+  "seed": 20260923,
+  "minimums": {
+    "train_pairs_total": 100000,
+    "train_source_groups_total": 2500,
+    "val_source_groups_total": 250,
+    "exam_source_groups_total": 500,
+    "train_pairs_by_task": {
+      "sr_x2": 25000,
+      "denoise": 25000,
+      "deblur": 20000,
+      "jpeg_recovery": 20000,
+      "archive_restore": 10000
+    },
+    "exam_source_groups_by_domain": {
+      "modern": 150,
+      "archive": 200,
+      "faces": 100,
+      "near_monochrome": 100
+    }
+  },
+  "split_policy": {
+    "by_source_group": true,
+    "train": 0.80,
+    "val": 0.10,
+    "exam": 0.10,
+    "exam_never_used_for_training": true,
+    "no_crops_from_same_source_across_splits": true
+  },
+  "acceptance_gate": {
+    "require_all": true,
+    "min_psnr_delta_db": -0.05,
+    "min_ssim_delta": -0.001,
+    "max_face_identity_drift_delta": 0.0,
+    "max_near_monochrome_chroma_artifact_delta": 0.0,
+    "max_clipping_delta_pp": 0.0,
+    "max_false_edge_ratio_delta": 0.0,
+    "must_not_regress_any_task": true,
+    "manual_exam_required": true
+  },
+  "rules": [
+    "Smoke datasets validate code only and MUST NOT produce release checkpoints.",
+    "Training and exam splits are separated by original source image/group, never by crop.",
+    "User D/N/U feedback is hard-mining/preference data, not expert ground truth.",
+    "Near-monochrome and sepia photos must not acquire new local chroma islands.",
+    "Faces must prefer slightly softer output over invented identity details.",
+    "No release model may be selected only by PSNR/SSIM. Safety gate is mandatory.",
+    "All downloaded sources must record origin URL, license, checksum when available, and source group id."
+  ]
+}

@@ -1,0 +1,20 @@
+Photo Doctor — ALMAZ Windows console encoding fix
+Date: 2026-09-22
+
+Bug reproduced from user traceback
+- ALMAZ model preparation exited with code 1 on Windows Python 3.12.
+- Immediate cause: UnicodeEncodeError in cp1251 while printing decorative U+2713 CHECK MARK from tools/almaz_prepare_env.py.
+- Model download/export had not failed yet; the preparation process crashed while writing status text.
+
+Fix
+- Model-preparation QProcess children now receive PYTHONUTF8=1 and PYTHONIOENCODING=utf-8.
+- The prepare helper also propagates those variables to pip/exporter subprocesses.
+- Console-only decorative glyphs were replaced with ASCII-safe status text: [OK], ..., <->.
+- The GUI continues decoding preparation output as UTF-8.
+
+Verification
+- Exact cp1251 output smoke: PASS; no UnicodeEncodeError.
+- ALMAZ/model-prep/runtime/Validator focused suite: 93/93 PASS.
+- GUI/startup/packaging regression: 106/106 PASS.
+- Input/preview-cache/white-balance regression: 46/46 PASS.
+- compileall src/tools/tests: PASS.

@@ -1,0 +1,35 @@
+Photo Doctor 0.5.11 — Correction Order Fix
+Build verification — 2026-09-24
+
+Source regression:
+- 84/84 test files PASS
+- 713 tests PASS
+- Correction-order execution regression PASS
+
+Candidate ZIP verification from a path with spaces:
+- internal SHA manifest: 339/339 PASS
+- imported app version: 0.5.11
+- retained analysis cache key: 0.5.10-surface-v9-maximum (intentional; analysis unchanged)
+- correction order smoke: PASS
+- targeted extracted-ZIP smoke: 99/99 PASS
+- compileall from extracted copy: PASS
+- ZIP cache/bytecode entries: 0
+
+Execution order:
+1. Surface defects (manual selection only)
+2. Red-eye
+3. JPEG Recovery
+4. Denoise
+5. Deblur
+6. Halo cleanup
+7. White balance
+8. Auto tone/color OR exposure
+9. Contrast
+10. Deband/posterization
+11. Super Resolution x2
+12. Final sharpening
+
+Notes:
+- UI/table row order does not control processing order.
+- ALMAZ candidate identity overrides a legacy action bucket for stage placement.
+- Existing 0.5.10 image-analysis cache is deliberately reusable because detection/analysis was not changed.

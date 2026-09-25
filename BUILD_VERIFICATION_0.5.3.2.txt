@@ -1,0 +1,11 @@
+Photo Doctor 0.5.3.2 verification
+
+- Python compileall: PASS
+- Exposure/Decision/Validator/Presentation targeted tests: 74/74 PASS
+- Test batch A: 219/219 PASS
+- Test batch B: 152/152 PASS
+- test_core.py: 14/14 PASS
+- TOTAL: 385/385 PASS
+
+Build runner fix from 0.5.3.1 is retained.
+PyInstaller pinned: 6.21.0.

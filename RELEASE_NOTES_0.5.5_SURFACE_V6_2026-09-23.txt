@@ -1,0 +1,13 @@
+Photo Doctor 0.5.5 — Surface v6
+Дата: 2026-09-23
+
+Исправлено:
+1. Инвалидация старого анализа: ALGORITHM_VERSION = 0.5.5-surface-v6.
+2. Версия программы/пакета/Windows metadata = 0.5.5.
+3. Normal Surface AI проверяет до 48 кандидатов.
+4. Подтверждённые дефекты ниже classical display pool продвигаются в карту.
+5. Узкий Context Meta rescue для бледных светлых low-contrast lines.
+6. Post-AI Validator повторно строит executable repair mask.
+7. Подтверждённые светлые трещины на лице могут лечиться по узкой маске; eye-risk >= 0.80 остаётся manual-only.
+8. Surface heal default strength = 70%; safety cap по площади изменения = 3%.
+9. Regression на архивном пользовательском снимке проверяет face + light background repair.

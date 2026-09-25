@@ -1,0 +1,45 @@
+Photo Doctor 0.5.9 — IDEAL + SURFACE V9 MANUAL-ONLY
+Date: 2026-09-24
+
+Main changes
+============
+
+1. First tab is read-only summary
+- The visible correction list on the Result tab no longer contains selection checkboxes.
+- The block is named "Резюме исправлений".
+- Correction selection remains in the Plan tab and specialised tabs.
+- The hidden canonical list remains internal only to preserve preview/Plan compatibility.
+
+2. Surface V9: deeper scratch/crack search, always human-approved
+- Surface search is more recall-oriented: additional morphology scales, more sensitive low-contrast Hough search, deeper broad bright emulsion-loss search and larger candidate pools.
+- The proven V8 Hough pass is preserved; the V9 pass is additive so added sensitivity does not penalise proven legacy candidates.
+- A hard negative guard still suppresses text-like high-texture fragments and existing fabric/repetition guards remain active.
+- Surface repair is manual-only at all decision layers:
+  * `surface_candidate_auto_repair_eligible()` always returns False;
+  * Validator never accepts/auto-enables Surface;
+  * the Defects tab seeds treatment only from persisted human D labels;
+  * Plan -> "Выбрать всё доступное" cannot arm Surface unless the user already selected Surface candidates.
+- AI / Context Meta may rank and explain candidates, but only the user can tick "Лечить".
+
+3. New fourth precision mode: "Идеальный"
+- UI/CLI profile key: `ideal` / label "Идеальный".
+- Deep image budget up to 6144 px versus 4096 px in Precise.
+- 4K local-map inspection budget is ~2.11x Precise; deep pixel budget is 2.25x.
+- Face-search budget is roughly 2.5x Precise (more independent scales and rotation passes).
+- Eye detector uses extra fine-scale/equalisation passes.
+- Surface candidate budgets: Ideal 128 visible / 288 deep, versus Precise 64 / 144.
+- Native Surface verifier budget: Ideal up to 192, versus Precise up to 96.
+- Ideal Surface is additive: it runs the Precise Surface pass plus the denser Ideal pass, then merges/deduplicates them so a distinct Precise candidate cannot be silently forgotten.
+- On the archival regression image measured wall time was ~10.26 s Ideal versus ~5.06 s Precise (2.03x), with 76 versus 61 Surface candidates and zero unprocessed candidates.
+
+Validation
+==========
+- Full source suite: 83/83 test files PASS.
+- Total source tests: 709 PASS, 0 failures.
+- Surface regression suite includes faint interrupted low-contrast scratches, text/fabric hard negatives, archival face/background cracks, broad emulsion damage, additive Ideal merge and manual-only repair contract.
+
+Versions
+========
+Application: 0.5.9
+Algorithm cache key: 0.5.9-surface-v9
+Validator: 0.2.2

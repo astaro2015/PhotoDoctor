@@ -1,0 +1,11 @@
+Photo Doctor 0.5.3.3 verification
+
+Изменение: синхронизация карты дефектов с колонкой «Лечить» + диагностический режим «Показывать все найденные на карте».
+
+Проверки:
+- python compileall: PASS
+- полный pytest suite: 390/390 PASS
+- defect-map regression tests: PASS
+- packaging/version metadata tests: PASS
+
+Примечание: в текущем Linux-контейнере Windows EXE не собирался. Для Windows используется штатный BUILD_EXE.bat / PhotoDoctor.spec.

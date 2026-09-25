@@ -1,0 +1,14 @@
+model_id=native_surface_refiner_v1
+version=1.0.0-experimental
+training=procedural_precise_candidate_hograwmeta_v1
+parameters=1229154
+input=96x96+candidate_meta
+feature_dim=5389
+labels=natural_detail,defect
+uncertain_rule=max_probability<0.70
+synthetic_validation_accuracy=0.925000
+synthetic_negative_recall=0.918000
+synthetic_defect_recall=0.932000
+selective_coverage_0.70=0.904000
+selective_accuracy_0.70=0.955752
+seed=20260922

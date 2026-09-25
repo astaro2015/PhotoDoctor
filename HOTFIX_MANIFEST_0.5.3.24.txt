@@ -1,0 +1,37 @@
+Photo Doctor 0.5.3.24 — HOTFIX manifest
+Base: Photo Doctor 0.5.3.23 FULL_SOURCE
+
+Changed files: 26
+  M BUILD_VERIFICATION.txt
+  M README.md
+  M SOURCE_SHA256SUMS.txt
+  M pyproject.toml
+  M src/photodoctor/__init__.py
+  M src/photodoctor/core/analyzer.py
+  M src/photodoctor/core/decisions.py
+  M src/photodoctor/core/local_contrast.py
+  M src/photodoctor/core/local_correction_planner.py
+  M src/photodoctor/core/local_sharpness.py
+  M src/photodoctor/core/local_tone.py
+  M src/photodoctor/core/validator.py
+  M src/photodoctor/core/versioning.py
+  M src/photodoctor/core/white_balance.py
+  M src/photodoctor/gui/main_window.py
+  M src/photodoctor/gui/presentation.py
+  M tests/test_gui_layout_source.py
+  M tests/test_local_contrast.py
+  M tests/test_local_correction_planner.py
+  M tests/test_local_sharpness.py
+  M tests/test_local_tone.py
+  M tests/test_packaging_files.py
+  M tests/test_validator.py
+  M tests/test_white_balance.py
+  M tests/test_white_balance_integration.py
+  M version_info.txt
+
+New files: 3
+  A BUILD_VERIFICATION_0.5.3.24.txt
+  A HOTFIX_MANIFEST_0.5.3.24.txt
+  A RELEASE_NOTES_0.5.3.24.txt
+
+Deleted files: 0

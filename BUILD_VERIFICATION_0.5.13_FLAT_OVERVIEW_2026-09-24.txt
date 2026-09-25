@@ -1,0 +1,36 @@
+Photo Doctor 0.5.13 — Build Verification
+Дата: 2026-09-24
+
+База:
+- PhotoDoctor_0.5.12_UI_REDESIGN_PRIVALOV_FINAL_2026-09-24.zip
+
+Изменение:
+- плоский компактный «Обзор» без лишних QGroupBox;
+- удалены дублирующие кнопки внутри «Обзора»;
+- «Потенциал улучшения» убран с главного экрана;
+- добавлены разрешение, Мп, формат, ICC/sRGB, размер файла;
+- добавлены EXIF: камера, объектив, f/, выдержка, ISO, фокусное, дата;
+- Overview использует QScrollArea при нехватке высоты;
+- основной вертикальный QSplitter сохранён;
+- алгоритмы анализа и ALGORITHM_VERSION не менялись.
+
+Проверки рабочего дерева:
+- UI/localization/packaging targeted: 112/112 PASS;
+- полный regression suite разбит на независимые пакеты: 717/717 PASS;
+  - batch 1: 105/105 PASS
+  - batch 2: 71/71 PASS
+  - batch 3: 181/181 PASS
+  - batch 4a: 62/62 PASS
+  - batch 4b: 52/52 PASS
+  - batch 5: 109/109 PASS
+  - batch 6: 137/137 PASS
+- compileall src + tests: PASS.
+
+Примечание:
+- runtime Qt smoke в текущем Linux-контейнере не выполнялся, потому что PySide6 в среде отсутствует.
+- Это не failure проекта; GUI source/regression tests, использованные релизом 0.5.12, пройдены.
+
+Версии:
+- app: 0.5.13
+- ALGORITHM_VERSION: 0.5.10-surface-v9-maximum
+- author: Привалов Олег

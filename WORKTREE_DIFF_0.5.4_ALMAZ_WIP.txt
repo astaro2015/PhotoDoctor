@@ -1,0 +1,54 @@
+# ALMAZ WIP diff vs 0.5.3.26
+
+Modified: 14
+PhotoDoctor.spec
+pyproject.toml
+requirements-user.txt
+scripts/verify_env.py
+src/photodoctor/core/analyzer.py
+src/photodoctor/core/decisions.py
+src/photodoctor/core/exporter.py
+src/photodoctor/core/service.py
+src/photodoctor/core/validator.py
+src/photodoctor/gui/localization.py
+src/photodoctor/gui/main_window.py
+tests/test_exporter.py
+tests/test_packaging_files.py
+tests/test_preview_cache_source.py
+
+Added: 33
+DEV_SESSION_LOG_0.5.4_ALMAZ_WIP.md
+DEV_SESSION_LOG_ALMAZ_0.5.4_WIP.md
+ALMAZ_CORE_TEST_STATUS_2026-09-22.tsv
+WORKING_STATE_SHA256_0.5.4_ALMAZ_WIP.txt
+WORKING_STATE_SHA256_ALMAZ_0.5.4_WIP.txt
+src/photodoctor/ai/restoration_backend.py
+src/photodoctor/ai/restoration_catalog.py
+src/photodoctor/ai/restoration_runtime.py
+src/photodoctor/ai/sr_backend.py
+src/photodoctor/ai/sr_catalog.py
+src/photodoctor/ai/sr_runtime.py
+src/photodoctor/ai/almaz_status.py
+src/photodoctor/core/super_resolution.py
+src/photodoctor/core/almaz_restoration.py
+src/photodoctor/core/almaz_safety.py
+tests/test_nafnet_export_tool.py
+tests/test_restoration_backend.py
+tests/test_restoration_catalog.py
+tests/test_restoration_runtime.py
+tests/test_sr_backend.py
+tests/test_sr_catalog.py
+tests/test_sr_runtime.py
+tests/test_super_resolution.py
+tests/test_almaz_gui_source.py
+tests/test_almaz_restoration.py
+tests/test_almaz_safety.py
+tests/test_almaz_status.py
+tools/export_nafnet_restoration_onnx.py
+tools/export_swinir_s_x2_onnx.py
+tools/export_almaz_nafnet.py
+tools/export_almaz_swinir.py
+tools/install_almaz_onnx.py
+tools/almaz_export_common.py
+
+Removed: 0

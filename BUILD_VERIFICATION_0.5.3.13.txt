@@ -1,0 +1,20 @@
+Photo Doctor 0.5.3.13 — verification
+
+Feature: reference Auto Tone + Auto Contrast + Auto Color profile.
+
+Reference pair:
+- the new year 2002.jpg -> Photoshop Auto Tone -> Auto Contrast -> Auto Color -> the new year 2002_.jpg
+- reference photos are NOT bundled into this source archive.
+- measured Photo Doctor 80% preview MAE vs Photoshop: ~2.5 RGB levels / 255.
+
+Tests:
+- pytest collected: 424
+- batch results: 68 + 52 + 113 + 39 + 97 + 41 + 14 = 424 PASS
+- failures: 0
+- python compileall src/tests: PASS
+
+Safety:
+- compound action remains Review/manual, not automatic Fix;
+- sepia/monochrome/archival profiles are excluded from auto neutralisation;
+- compound action is mutually exclusive with separate exposure/contrast preview;
+- average brightness preservation and clipping checks are part of validation.

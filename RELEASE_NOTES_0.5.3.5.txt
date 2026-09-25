@@ -1,0 +1,8 @@
+Photo Doctor 0.5.3.5 — MOUSE PAN + FULLSCREEN VIEWER
+
+- ЛКМ + drag панорамирует увеличенное фото в основном окне.
+- Двойной клик открывает отдельный fullscreen viewer.
+- Fullscreen: колесо = масштаб, ЛКМ + drag = панорамирование, Esc = выход, +/- = масштаб, 0 = 100%, F = по окну.
+- Двойной клик в fullscreen закрывает viewer.
+- Visual overlay state копируется в fullscreen на полном исходном разрешении.
+- Region-selection режим имеет приоритет над pan жестом.

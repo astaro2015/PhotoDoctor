@@ -1,0 +1,19 @@
+{
+  "train_pairs_total": 100000,
+  "train_source_groups_total": 2500,
+  "val_source_groups_total": 250,
+  "exam_source_groups_total": 500,
+  "train_pairs_by_task": {
+    "sr_x2": 25000,
+    "denoise": 25000,
+    "deblur": 20000,
+    "jpeg_recovery": 20000,
+    "archive_restore": 10000
+  },
+  "exam_source_groups_by_domain": {
+    "modern": 150,
+    "archive": 200,
+    "faces": 100,
+    "near_monochrome": 100
+  }
+}

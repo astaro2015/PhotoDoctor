@@ -1,0 +1,26 @@
+Photo Doctor — ALMAZ Crack Detector v5
+Build verification — 23.09.2026
+
+WORKTREE VERIFICATION
+- pytest collection: 680 tests
+- test files: 82/82 PASS
+- targeted surface/UI regression: 97/97 PASS
+- compileall src/tests/tools: PASS
+- backup files *.bak_pre_*: absent
+- __pycache__/.pytest_cache/*.pyc/*.pyo before packaging: absent
+
+CANDIDATE ZIP UNPACK VERIFICATION
+Unpacked into a path containing spaces.
+- internal SHA-256 manifest: 303/303 PASS
+- pytest collection: 680 tests
+- full unpacked test suite: 680/680 PASS
+  - batch 0..25: 153 PASS
+  - test_core.py: 14/14 PASS (split to avoid external shell timeout)
+  - batch 27..43: 200 PASS
+  - test_local_correction_planner.py: 10/10 PASS
+  - batch 45..63: 162 PASS
+  - batch 64..81: 141 PASS
+- test failures: 0
+
+FINAL ZIP POLICY
+Only this verification text and its dependent SHA manifest are regenerated after the candidate verification. Program source, tests, fixture and release notes remain byte-identical to the fully tested candidate. The final ZIP is then re-unpacked, its manifest rechecked, and the 97 targeted surface/UI regressions are rerun.

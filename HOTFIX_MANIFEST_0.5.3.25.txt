@@ -1,0 +1,49 @@
+Photo Doctor 0.5.3.25 HOTFIX manifest
+Base: 0.5.3.24 FULL_SOURCE
+Destination: 0.5.3.25
+
+Changed files:
+- BUILD_VERIFICATION.txt
+- README.md
+- SOURCE_SHA256SUMS.txt
+- pyproject.toml
+- src/photodoctor/__init__.py
+- src/photodoctor/__main__.py
+- src/photodoctor/core/analyzer.py
+- src/photodoctor/core/auto_tone_color.py
+- src/photodoctor/core/decisions.py
+- src/photodoctor/core/eyes.py
+- src/photodoctor/core/faces.py
+- src/photodoctor/core/jpeg_artifacts.py
+- src/photodoctor/core/loader.py
+- src/photodoctor/core/local_contrast.py
+- src/photodoctor/core/local_correction_planner.py
+- src/photodoctor/core/local_sharpness.py
+- src/photodoctor/core/noise.py
+- src/photodoctor/core/rendering_artifacts.py
+- src/photodoctor/core/service.py
+- src/photodoctor/core/surface.py
+- src/photodoctor/core/validator.py
+- src/photodoctor/core/versioning.py
+- src/photodoctor/core/white_balance.py
+- src/photodoctor/gui/main_window.py
+- tests/test_packaging_files.py
+- tests/test_surface.py
+- tests/test_validator.py
+- version_info.txt
+
+New files:
+- BUILD_VERIFICATION_0.5.3.25.txt
+- CHANGED_FILES_0.5.3.25.txt
+- HOTFIX_MANIFEST_0.5.3.25.txt
+- RELEASE_NOTES_0.5.3.25.txt
+- src/photodoctor/core/performance.py
+- src/photodoctor/gui/startup.py
+- tests/test_analyzer_parallel_equivalence.py
+- tests/test_preview_cache_source.py
+- tests/test_startup_performance.py
+
+Deleted files:
+- none
+
+Apply by replacing/adding the listed files over a clean 0.5.3.24 tree.

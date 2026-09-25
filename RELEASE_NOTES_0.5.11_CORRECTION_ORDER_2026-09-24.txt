@@ -1,0 +1,20 @@
+Photo Doctor 0.5.11 — Correction Order Fix
+2026-09-24
+
+Changes:
+- Multi-correction preview/save pipeline now uses a deterministic structure-first order independent of UI row order.
+- Surface repair runs before global tone/color work.
+- JPEG Recovery runs before Denoise.
+- Denoise runs before Deblur.
+- Deblur runs before halo cleanup.
+- White balance / auto-tone / exposure / contrast run after structural restoration.
+- Deband/posterization follows tone work.
+- Super Resolution x2 remains before final sharpening.
+- ALMAZ upgraded candidates are placed by candidate identity, not only their legacy action key.
+- Surface defects remain manual-only exactly as in 0.5.10.
+- Maximum precision behavior and Surface V9 detection are unchanged.
+- Existing 0.5.10 analysis cache remains valid by design because the analysis algorithm itself was not changed.
+
+Regression:
+- 84/84 test files PASS
+- 713 tests PASS

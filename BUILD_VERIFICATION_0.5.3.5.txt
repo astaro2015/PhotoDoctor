@@ -1,0 +1,5 @@
+Photo Doctor 0.5.3.5 build verification
+
+Feature: mouse drag panning + fullscreen image viewer.
+Source-level GUI regression tests included.
+Version resources and packaging metadata updated to 0.5.3.5.

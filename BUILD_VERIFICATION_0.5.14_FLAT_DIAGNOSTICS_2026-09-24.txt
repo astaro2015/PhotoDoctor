@@ -1,0 +1,33 @@
+Photo Doctor 0.5.14 — Build Verification
+Дата: 2026-09-24
+
+База:
+- PhotoDoctor 0.5.13 FLAT_OVERVIEW_CAMERA_INFO FINAL.
+
+Изменения:
+- плоский прокручиваемый ALMAZ UI без QGroupBox;
+- ALMAZ log свёрнут по умолчанию;
+- runtime controls ALMAZ разбиты на две строки;
+- простой ИИ UI плоский и прокручиваемый без QGroupBox;
+- алгоритмы анализа / ALMAZ inference / safety gates не менялись;
+- ALGORITHM_VERSION сохранён: 0.5.10-surface-v9-maximum.
+
+Проверки рабочего дерева:
+- compileall src + tests: PASS
+- test_gui_layout_source + test_packaging_files: 110/110 PASS
+- полный suite, независимые пакеты: 718/718 PASS
+  - 105 PASS
+  - 71 PASS
+  - 182 PASS
+  - 59 PASS
+  - 55 PASS
+  - 109 PASS
+  - 137 PASS
+- __pycache__: 0 перед упаковкой
+- .pytest_cache: 0 перед упаковкой
+- *.pyc: 0 перед упаковкой
+- JPG/JPEG/WEBP пользовательских файлов: 0
+
+Версия:
+- package / pyproject / Windows string metadata: 0.5.14
+- author: Привалов Олег

@@ -1,0 +1,31 @@
+Photo Doctor 0.5.15 — Build Verification
+Дата: 2026-09-24
+
+База:
+- PhotoDoctor 0.5.14 FLAT_DIAGNOSTICS FINAL.
+
+Изменения:
+- корректный общий пересчёт высоты строк таблицы «Метрики»;
+- debounce-пересчёт при изменении ширины столбцов;
+- компактный рендер raw technical data вместо полного JSON;
+- техническая таблица без ResizeToContents, с фиксированной высотой строк и ElideRight;
+- короткие подписи: Открыть / Сохранить слева, Предпросмотр справа;
+- иконки Open / Save / Preview;
+- анализ / correction pipeline / ALMAZ / safety gates не менялись;
+- ALGORITHM_VERSION сохранён: 0.5.10-surface-v9-maximum.
+
+Проверки рабочего дерева:
+- compileall src + tests: PASS
+- профильные GUI/packaging/preview/ALMAZ: 137/137 PASS
+- полный suite, независимые пакеты: 722/722 PASS
+  - 105 PASS
+  - 71 PASS
+  - 185 PASS
+  - 59 PASS
+  - 55 PASS
+  - 109 PASS
+  - 137 PASS
+
+Версия:
+- package / pyproject / Windows string metadata: 0.5.15
+- author: Привалов Олег

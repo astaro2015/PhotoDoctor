@@ -1,0 +1,29 @@
+Photo Doctor 0.5.6 — Surface V7 convergence/history fix
+Date: 2026-09-23
+
+What changed
+- Surface repair history is now carried inside saved PNG/JPEG copies.
+  PNG: private PhotoDoctorSurfaceHistory text chunk.
+  JPEG: private PhotoDoctorSurfaceHistory COM payload.
+  Existing EXIF/ICC/XMP/DPI/comments remain preserved by the exporter; Photo Doctor only adds/replaces its own history payload.
+- On the next analysis of a saved derivative, candidates that substantially overlap an already repaired Surface region are marked previously_repaired and are not auto-armed again.
+- Adjacent unrepaired tails remain eligible: history suppression is overlap-based, not a broad exclusion zone.
+- Surface repair mask now bridges only short, similarly oriented gaps when the gap itself is supported by a bright ridge relative to both sides. This helps one physical crack get repaired as one narrow object rather than over many repeated passes.
+- Convergence stop:
+  * after >=1 saved Surface pass, <=2 weak residual candidates with <=0.25% actual changed pixels are manual-review only;
+  * after >=2 saved Surface passes, <=3 weak residual candidates with <=0.15% actual changed pixels are manual-review only.
+  High-confidence residuals (>=0.82) are not suppressed by this rule.
+- GUI no longer auto-checks residual_manual_only candidates. Explicit user D/N choices still take priority.
+- Version bumped to 0.5.6; analysis cache key is 0.5.6-surface-v7.
+
+Real-photo validation (user-provided archival photo; image NOT included in this release)
+- clean Surface pass 1: 9 executable candidates; changed_pixel_pct 0.3780%
+- clean Surface pass 2: 5 new executable candidates; changed_pixel_pct 0.1177%
+- analysis after pass 2: 3 weak residual candidates; changed_pixel_pct 0.1162%; accepted=False; auto_eligible=False; residual_manual_only=True
+This test intentionally used Surface only, excluding the mixed-correction 4->5 step from the user's earlier sequence.
+
+Safety
+- Eye-protection veto remains active.
+- Face repair remains limited to narrow verified defect masks.
+- History does not block a neighboring continuation unless the newly detected candidate materially overlaps an already repaired region.
+- The user-provided archival image is not bundled in the project or release archive.

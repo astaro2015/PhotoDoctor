@@ -1,0 +1,29 @@
+Photo Doctor 0.5.6 / Surface V7 build verification
+Date: 2026-09-23
+
+Version
+- package: 0.5.6
+- ALGORITHM_VERSION: 0.5.6-surface-v7
+- SURFACE_REFINEMENT_VERSION: 0.9.0
+
+Tests
+- 83/83 test files passed when executed file-by-file.
+- pytest collection: 688 tests.
+- test_core.py: 14/14 passed (executed per test because aggregate shell calls exceeded the external command window).
+- new Surface V7 history tests: 5/5 passed.
+
+Targeted real-photo convergence validation
+- pass 1: 9 candidates, 0.3780% changed pixels.
+- pass 2: 5 candidates, 0.1177% changed pixels.
+- next analysis: 3 candidates, 0.1162% changed pixels, automatically demoted to manual-only after two saved Surface passes.
+- test photo was used only at runtime and is not included in the release.
+
+Final archive verification
+- compileall on source tree: PASS
+- cache/pyc cleanup before ZIP: PASS
+- unpacked to path with spaces: PASS
+- internal SHA256 verification after unpack: 311/311 PASS
+- unpacked archive contained cache/pyc entries: 0
+- version from unpacked archive: 0.5.6 / 0.5.6-surface-v7 / refinement 0.9.0
+- targeted unpacked-archive smoke: 170/170 PASS
+- compileall from unpacked archive: PASS

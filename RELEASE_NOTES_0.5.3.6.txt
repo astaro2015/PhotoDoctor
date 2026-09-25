@@ -1,0 +1,7 @@
+Photo Doctor 0.5.3.6
+
+STARTUP HOTFIX
+- Fixed ImageView startup crash: AttributeError: _pixmap.
+- eventFilter now has a construction barrier and cannot read ImageView state before __init__ completes.
+- All eventFilter state is initialized before installEventFilter().
+- Added structural regression tests that automatically cover private fields read by eventFilter.

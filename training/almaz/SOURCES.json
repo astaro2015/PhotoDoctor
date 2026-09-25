@@ -1,0 +1,64 @@
+{
+  "format": 1,
+  "policy": {
+    "automatic_training_allowlist": ["MIT", "CC0-1.0", "Public-Domain", "CC-BY-4.0"],
+    "manual_review_required": ["No-Known-Copyright-Restrictions", "CC-BY-SA", "custom", "unknown"],
+    "blocked_by_default": ["NC", "ND", "research-only", "unknown"]
+  },
+  "sources": [
+    {
+      "id": "sidd",
+      "title": "Smartphone Image Denoising Dataset (SIDD)",
+      "tasks": ["denoise"],
+      "homepage": "https://abdokamel.github.io/sidd/",
+      "license": "MIT",
+      "commercial_training_default": true,
+      "notes": "Official SIDD page states dataset and associated code repositories are under MIT License. Use full paired sRGB data for the real-noise lane; SIDD-Small is smoke/debug only."
+    },
+    {
+      "id": "gopro_large",
+      "title": "GOPRO_Large dynamic scene deblurring dataset",
+      "tasks": ["deblur"],
+      "homepage": "https://seungjunnah.github.io/Datasets/gopro.html",
+      "license": "CC-BY-4.0",
+      "commercial_training_default": true,
+      "notes": "Official dataset page states GOPRO dataset is released under CC BY 4.0. Preserve attribution metadata."
+    },
+    {
+      "id": "loc_free_to_use",
+      "title": "Library of Congress Free to Use and Reuse sets",
+      "tasks": ["archive_restore", "sr_x2", "jpeg_recovery", "exam"],
+      "homepage": "https://www.loc.gov/free-to-use/",
+      "license": "item-level",
+      "commercial_training_default": false,
+      "notes": "Use only records whose item rights are explicitly Public Domain, CC0 or another contract-allowed license. Do not assume every loc.gov item is reusable. Keep archive exam source groups separate from synthetic training sources."
+    },
+    {
+      "id": "div2k",
+      "title": "DIV2K",
+      "tasks": ["sr_x2", "jpeg_recovery"],
+      "homepage": "https://data.vision.ee.ethz.ch/cvl/DIV2K/",
+      "license": "research-only-review",
+      "commercial_training_default": false,
+      "notes": "Useful benchmark/research source. Keep disabled for release training unless licensing is explicitly cleared for the intended use."
+    },
+    {
+      "id": "reds",
+      "title": "REDS / NTIRE restoration data",
+      "tasks": ["jpeg_recovery", "deblur"],
+      "homepage": "https://github.com/megvii-research/NAFNet",
+      "license": "manual-review-required",
+      "commercial_training_default": false,
+      "notes": "Current ALMAZ JPEG model is derived from a REDS-trained NAFNet checkpoint. Before fine-tuning release models on REDS data, Codex must verify dataset redistribution/training terms and record them in SOURCES.lock.json."
+    },
+    {
+      "id": "ffhq",
+      "title": "FFHQ",
+      "tasks": ["face_exam"],
+      "homepage": "https://github.com/NVlabs/ffhq-dataset",
+      "license": "NC/review",
+      "commercial_training_default": false,
+      "notes": "Do not use for release training by default. If used at all, keep to research-only experiments/benchmark under its actual terms. Prefer permissively licensed/public-domain face photos for release evaluation."
+    }
+  ]
+}

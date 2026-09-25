@@ -1,0 +1,31 @@
+Photo Doctor 0.5.5 — Surface V6 build verification
+Date: 2026-09-23
+
+Versioning / cache invalidation
+- Application version: 0.5.5
+- Algorithm version: 0.5.5-surface-v6
+- Validator version: 0.2.1
+- The changed algorithm key invalidates stale analysis cache from prior Surface builds.
+
+Surface V6 repair pipeline
+- Normal Surface verification pool: up to 48 candidates.
+- Post-AI confirmed low-contrast candidates are promoted into the refined repair pool.
+- Narrow Context Meta rescue is limited to bright, line-like, low-risk low-contrast candidates.
+- Face cracks can be auto-repaired when independently confirmed; protected eye-risk candidates remain manual-only.
+- Post-AI validator rebuilds the executable narrow repair mask from the final refined candidates.
+- Default Surface repair strength: 70%.
+
+User archival reference regression
+- Reference fixture: tests/fixtures/archive_low_contrast_cracks_user_reference.png
+- Surface candidate pool: 45; evaluated: 45/45.
+- Executable repair mask reaches both the face-crack zone and light-background crack zone.
+- Post-AI Surface validation is accepted/auto-eligible/technically passed.
+- Repair remains narrow: changed-pixel area is below the 3% safety limit (observed about 1.1%).
+
+Tests
+- Full source suite: 82/82 test files PASS; 683 tests PASS.
+- Targeted Surface/Validator/GUI/packaging suite: 155 tests PASS.
+- test_core.py: 14/14 PASS.
+- compileall over src/tests/tools/scripts: PASS.
+
+Packaging verification is completed after creating the final ZIP and is recorded separately by the final release response and outer SHA-256 companion file.

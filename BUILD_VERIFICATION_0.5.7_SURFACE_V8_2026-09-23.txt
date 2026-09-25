@@ -1,0 +1,33 @@
+Photo Doctor 0.5.7 / Surface V8 — build verification
+Дата: 2026-09-23
+
+SOURCE TREE TESTS:
+- 83 / 83 test files PASS
+- 693 tests PASS
+- 0 failed
+- tests/test_core.py: 14 / 14 PASS (run in smaller groups because the outer shell timer can terminate a completed long command)
+- Surface/Validator/GUI/packaging focused suite: 170 / 170 PASS
+
+VERSION:
+- photodoctor.__version__ = 0.5.7
+- ALGORITHM_VERSION = 0.5.7-surface-v8
+- VALIDATOR_VERSION = 0.2.2
+- pyproject.toml = 0.5.7
+- Windows version resource = 0.5.7
+
+COMPILE:
+- python -m compileall -q src tests tools: PASS
+
+RELEASE CLEANLINESS:
+- __pycache__, .pytest_cache and *.pyc are removed before packaging.
+- User control photographs are NOT copied into the release tree.
+
+Final unpacked-ZIP SHA/smoke results are appended after release packaging.
+
+FINAL UNPACKED ZIP CHECK:
+- internal manifest: 314 / 314 SHA PASS
+- imported version from unpacked copy: 0.5.7
+- imported ALGORITHM_VERSION: 0.5.7-surface-v8
+- imported VALIDATOR_VERSION: 0.2.2
+- focused Surface/Validator/GUI/packaging smoke from unpacked ZIP: 170 / 170 PASS
+- compileall from unpacked ZIP: PASS

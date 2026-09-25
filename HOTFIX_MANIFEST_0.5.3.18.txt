@@ -1,0 +1,35 @@
+Photo Doctor 0.5.3.18 HOTFIX manifest
+Base: 0.5.3.17 FULL_SOURCE
+
+Apply by copying these files over the 0.5.3.17 source tree, preserving paths.
+User-supplied training/reference photos are NOT included.
+
+Files:
+- BUILD_VERIFICATION_0.5.3.18.txt
+- README.md
+- RELEASE_NOTES_0.5.3.18.txt
+- SURFACE_REAL_PAIR_TRAINING_20260921.md
+- pyproject.toml
+- src/photodoctor/__init__.py
+- src/photodoctor/core/analyzer.py
+- src/photodoctor/core/database.py
+- src/photodoctor/core/feedback_export.py
+- src/photodoctor/core/surface.py
+- src/photodoctor/core/surface_refinement.py
+- src/photodoctor/core/training_export.py
+- src/photodoctor/core/versioning.py
+- src/photodoctor/gui/ai_presentation.py
+- src/photodoctor/gui/main_window.py
+- tests/test_correction_feedback.py
+- tests/test_database_batch.py
+- tests/test_feedback_export.py
+- tests/test_gui_layout_source.py
+- tests/test_packaging_files.py
+- tests/test_russian_ui_localization.py
+- tests/test_surface.py
+- tests/test_surface_feedback.py
+- tests/test_surface_refinement.py
+- tests/test_training_export.py
+- version_info.txt
+- HOTFIX_MANIFEST_0.5.3.18.txt
+- SOURCE_SHA256SUMS.txt

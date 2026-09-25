@@ -1,0 +1,29 @@
+Photo Doctor 0.5.3.18
+
+Surface-defect detection and verification overhaul.
+
+1. Context-aware surface detector v4
+- multi-scale bright/dark morphology remains the candidate generator;
+- candidates are now evaluated using local-neighborhood contrast, line geometry, true oriented aspect, estimated stroke width, side similarity, texture risk and chroma risk;
+- repeated near-parallel lines are penalized/suppressed as likely fabric/text/blinds structure;
+- face and eye regions raise the evidence bar without hiding possible real scratches;
+- poor-context candidates are removed before AI inference.
+
+2. Surface AI safety
+- embedded Surface Refiner v1 is explicitly treated as a synthetic/procedural baseline;
+- a confident v1 prediction cannot promote a poor classical candidate by itself;
+- final verification fuses AI evidence with deterministic context evidence;
+- dark natural lines are handled especially conservatively;
+- raw AI verdict and final verification verdict are retained separately for diagnostics.
+
+3. Real-photo study
+- user-supplied damaged/restored pairs were used as weak real-pair supervision for calibration research;
+- original photos are not bundled with Photo Doctor;
+- a candidate learned calibrator was rejected because cross-source validation was not strong enough;
+- real-pair findings were used to calibrate detector/fusion behavior, not to masquerade weak labels as Expert Base.
+
+4. Diagnostics / UI truthfulness
+- AI resources text states that Surface Refiner v1 is a synthetic baseline and its result is context-checked;
+- surface refinement diagnostics report raw AI counts separately from final verified counts.
+
+See SURFACE_REAL_PAIR_TRAINING_20260921.md for the real-data study and promotion decision.

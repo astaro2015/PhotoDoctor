@@ -1,0 +1,25 @@
+Photo Doctor 0.5.3.15 — verification
+Date: 2026-09-21
+
+Source base:
+- PhotoDoctor_0.5.3.14_FULL_SOURCE_WB_ADVISOR.zip
+- base SHA-256: 9767aa069cc97d74b8e9384e0fa81d6b63d9b5616dd6e0d430d2b970696cf046
+
+Version checks:
+- pyproject.toml: 0.5.3.15
+- src/photodoctor/__init__.py: 0.5.3.15
+- src/photodoctor/core/versioning.py ALGORITHM_VERSION: 0.5.3.15
+- version_info.txt FileVersion/ProductVersion: 0.5.3.15
+
+Regression verification:
+- Full test inventory was executed in independent groups because the container command wrapper timed out on a monolithic pytest invocation.
+- Group results: 87 + 14 + 143 + 52 + 111 + 45 = 452 tests.
+- Final result: 452/452 PASS.
+- No test failures were observed.
+
+Environment limitation:
+- Linux container; Windows GUI click-smoke / native PyInstaller EXE build was not performed here.
+- Source-level GUI regression tests are included and passed.
+
+Packaging policy:
+- __pycache__, .pytest_cache, *.pyc and temporary files are excluded from release ZIPs.

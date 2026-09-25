@@ -1,0 +1,13 @@
+Photo Doctor 0.5.3.14 — verification
+
+Feature: WB Advisor / White Balance
+- compileall: PASS
+- full project tests: 435/435 PASS
+  - batch 1: 96/96
+  - batch 2: 152/152
+  - batch 3: 117/117
+  - batch 4: 70/70
+- real user reference pipeline:
+  - original: warm cast, approx -2024 K / tint +6.8 / 79% neutralization
+  - Photoshop Auto Color: correction not required
+- archive must not contain user photos, runtime DB, .pytest_cache or __pycache__.

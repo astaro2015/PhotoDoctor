@@ -1,0 +1,33 @@
+Photo Doctor 0.5.3.19
+
+Surface AI v2 + Context Meta v2 candidate release.
+
+1. Surface verification architecture
+- active surface task routes to native_surface_verifier_v2;
+- 96x96 6-channel compact U-Net (~56k parameters) is a pixel-level second opinion/localizer;
+- native_surface_context_meta_v2 is the primary contextual verifier;
+- legacy native_surface_refiner_v1 remains bundled only for backward feedback/provenance compatibility and is not the active route.
+
+2. Leakage guard and real-pair validation
+- Context Meta v2 uses only 8 inference-available context/geometry features;
+- candidate_quality, parallel_neighbor_risk and all weak-label disappearance/response features are excluded from its contract;
+- packaged model metadata records label_feature_leakage_guard=enforced;
+- 5-group held-out weak-pair CV: precision 0.9734, recall 0.9846, coverage 0.7851, Wilson lower 95% 0.9461;
+- minimum precision across covered held-out groups: 0.8684;
+- these are weak-pair candidate metrics, not an expert-labelled universal accuracy claim.
+
+3. Precision-first promotion rules
+- packaged candidate must keep >=0.85 precision, >=0.80 Wilson lower bound, >=0.85 minimum covered-group precision and cover at least 3 source groups;
+- Surface AI remains advisory-only and automatic edits are forbidden;
+- strong Context Meta can keep a good line/crack candidate even if pixel U-Net is merely uncertain;
+- strong pixel negative may veto; compact bright spots require stronger pixel support due to catchlight/text/highlight false positives.
+
+4. Real-pipeline checks
+- clean advertising control image: 0 confirmed surface defects in Normal and Precise modes;
+- damaged archival control image in Precise mode: 40 evaluated, 35 probable defects, 4 uncertain, 1 natural detail; remaining candidates are not promoted without evaluation;
+- user control images are not bundled in the release.
+
+5. UI/provenance
+- active model summary now says Surface AI v2 + Context Meta v2 instead of the obsolete v1 label;
+- MODEL_VERSION points to the active v2/context-meta stack;
+- manifest regression expects native_surface_verifier_v2.

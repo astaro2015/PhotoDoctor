@@ -1,0 +1,31 @@
+Photo Doctor 0.5.10 — Build verification
+Date: 2026-09-24
+
+SOURCE TESTS
+- 83/83 test files PASS
+- 710 tests PASS
+- 0 failures
+
+REQUIREMENTS VERIFIED
+- Public fourth mode is "Максимальный" / `maximum`.
+- Legacy `ideal` / `идеально` remain compatibility aliases only.
+- Result tab correction list is read-only summary; selection remains elsewhere.
+- Surface V9 repair is hard manual-only: accepted=False / auto_eligible=False before explicit user selection.
+- Maximum spatial map budget on 4K: ~42,928 local measurements.
+- Archival reference Maximum map budget: ~9,033 local cells.
+- Archival reference Surface: 232 candidates / 232 AI-refined / 0 unprocessed.
+- Benchmark on archival reference: Precise ~5.62 s; old Ideal ~10.75 s; Maximum ~20.57 s.
+
+RELEASE PACKAGING
+- Source compileall: PASS.
+- Source release tree cleaned: 0 __pycache__, 0 .pytest_cache, 0 .pyc/.pyo before candidate ZIP.
+- Candidate ZIP unpacked into a path with spaces: PASS.
+- Candidate internal SHA manifest: 332/332 PASS.
+- Candidate archive cache/bytecode scan: 0 cache dirs, 0 .pyc/.pyo.
+- Version imports from unpacked candidate: app 0.5.10 / algorithm 0.5.10-surface-v9-maximum / Validator 0.2.2.
+- Precision registry from unpacked candidate: Быстро / Нормально / Точно / Максимальный.
+- Maximum 4K spatial-window count from unpacked candidate: 42,928.
+- Expanded unpacked-candidate smoke: 247/247 PASS in 26.77 s.
+- compileall from unpacked path-with-spaces copy: PASS.
+- Pre-final rebuilt ZIP verification: 332/332 SHA PASS; 162/162 focused smoke PASS; path-with-spaces compileall PASS.
+- Final ZIP is rebuilt after recording these facts; final archive SHA is published separately.

@@ -1,0 +1,27 @@
+Photo Doctor 0.5.9 — Build verification
+Date: 2026-09-24
+
+SOURCE TESTS
+- 83/83 test files PASS
+- 709 tests PASS
+- 0 failures
+
+REQUIREMENTS VERIFIED
+- Result tab visible correction summary is read-only; no correction checkboxes there.
+- Surface repair is always human-armed; auto eligibility is hard-disabled.
+- Surface V9 uses deeper recall-oriented scratch/crack search while preserving text/fabric guards.
+- Fourth precision mode "Идеальный" is available in GUI/CLI and materially deeper than Precise.
+- 4K local-map budget Ideal/Precise is within 2.0–3.0x; current regression ratio ~2.11x.
+- Archival reference: Precise ~5.06 s / 61 Surface candidates; Ideal ~10.26 s / 76 candidates; zero unprocessed candidates; Surface accepted=False and auto_eligible=False.
+
+RELEASE PACKAGING
+- Source compileall: PASS.
+- Source release tree cleaned: 0 __pycache__, 0 .pytest_cache, 0 .pyc/.pyo.
+- Candidate ZIP unpacked into a path with spaces: PASS.
+- Candidate internal SHA manifest: 327/327 PASS.
+- Candidate archive cache/bytecode scan: 0 cache dirs, 0 .pyc/.pyo.
+- Version imports from unpacked candidate: app 0.5.9 / algorithm 0.5.9-surface-v9 / Validator 0.2.2.
+- Precision registry from unpacked candidate: Быстро / Нормально / Точно / Идеальный.
+- Expanded unpacked-candidate smoke: 278/278 PASS in 24.65 s.
+- compileall from unpacked path-with-spaces copy: PASS.
+- Final ZIP is rebuilt only after these checks; final archive SHA is published separately.

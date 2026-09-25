@@ -1,0 +1,60 @@
+Photo Doctor 0.5.3.18 — verification
+Дата: 2026-09-21
+
+Исходная база
+-------------
+Photo Doctor 0.5.3.17 FULL SOURCE.
+
+Версии
+------
+- pyproject.toml: 0.5.3.18
+- src/photodoctor/__init__.py: 0.5.3.18
+- src/photodoctor/core/versioning.py ALGORITHM_VERSION: 0.5.3.18
+- Surface detector: context_aware_morphology_v4_ai_pool_contours
+- Surface refinement/fusion: 0.3.0
+- Surface Refiner v1 остаётся synthetic/procedural baseline; его raw verdict не равен итоговому подтверждению.
+- version_info.txt FileVersion/ProductVersion: 0.5.3.18
+
+Тесты рабочего дерева
+---------------------
+Полный набор проверен независимыми группами из-за внешнего timeout единого запуска:
+- test_core.py: 14 PASS
+- остальные группы: 127 + 181 + 148 PASS
+ИТОГО: 470/470 PASS
+
+Проверка на пользовательском реальном материале
+-----------------------------------------------
+Материал: 10 изображений из пользовательского архива + отдельный Grandmother.jpg.
+Пять изображений архива содержат пары «повреждённое -> восстановленное» и использованы только как weak real-pair supervision.
+Оригинальные изображения не входят в релиз.
+
+Derived weak set:
+- 330 candidates
+- 262 weak defect
+- 68 weak natural-detail
+- 5 independent source groups
+- split/validation выполнялись по исходному фото, без patch leakage.
+
+Кандидат обучаемого v2 НЕ продвинут в production: cross-source качество оказалось недостаточно стабильным (OOF AUC около 0.66 для малого context calibrator; HOG/raw вариант ещё хуже).
+Weak labels не объявлены Expert Base / ground truth.
+
+Grandmother.jpg, precise path:
+- surface candidates: 78
+- raw synthetic AI среди реально проверенных регионов: defect=11, natural=1, uncertain=2
+- итоговая context verification: confirmed defect=3, uncertain=11
+Визуально три подтверждённых региона соответствовали реальным трещинам/разрывам; стратегия намеренно консервативна.
+
+Синтаксис / упаковка
+--------------------
+- python -m compileall -q src tests: PASS
+- перед упаковкой удалены __pycache__, .pytest_cache, *.pyc/*.pyo
+- SOURCE_SHA256SUMS.txt генерируется после финализации метаданных и проверяется перед выпуском.
+
+Ограничение среды
+-----------------
+Это Linux-контейнер; нативный Windows GUI-smoke и сборка EXE здесь не выполнялись.
+Source-level GUI regressions, алгоритмические, database migration, provenance и packaging tests проверяются.
+
+Проверка готового архива в пути с пробелами
+-------------------------------------------
+Будет заполнено после распаковки предварительного FULL_SOURCE ZIP и повторного полного test-suite.

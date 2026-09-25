@@ -1,0 +1,36 @@
+Photo Doctor 0.5.3.19 — BUILD VERIFICATION
+
+Source tree verification
+- Version: 0.5.3.19
+- Full pytest suite: 486/486 PASS (run in independent groups due shell timeout on a monolithic run)
+- Target Surface AI v2 / Context Meta / GUI / packaging suite: 155/155 PASS
+- compileall: PASS
+- cache/temp cleanup: PASS
+- user supplied JPG/JPEG/WEBP files in release tree: 0
+
+Surface AI v2 / Context Meta v2 candidate
+- Context Meta held-out weak-pair precision: 0.973384
+- recall: 0.984615
+- coverage: 0.785075
+- Wilson lower 95%: 0.946089
+- minimum held-out group precision: 0.868421
+- source groups: 5
+- label-feature leakage guard: enforced
+- expert_verified: false
+- automatic_edits: false
+
+Real-pipeline control checks (control photos are NOT bundled)
+- clean advertising control, Normal: 0 confirmed surface defects
+- clean advertising control, Precise: 0 confirmed surface defects
+- damaged archival control, Precise: 40 evaluated / 35 probable defects / 4 uncertain / 1 natural detail
+
+Artifact re-extraction test
+- FULL_SOURCE ZIP integrity: PASS
+- extracted into a path containing spaces: PASS
+- extracted SOURCE_SHA256SUMS: 195/195 PASS
+- extracted full pytest suite: 486/486 PASS
+- extracted target Surface/AI/UI/packaging suite: 157/157 PASS
+- code was not modified after the extracted full-suite pass; only this verification text and checksums were refreshed
+
+Environment limitation
+- Windows/PySide6 click-through GUI smoke was not executed in this Linux container. Source-level GUI tests passed.

@@ -1,0 +1,26 @@
+Photo Doctor 0.5.3.17 hotfix manifest
+База: Photo Doctor 0.5.3.16
+
+Изменённые/добавленные файлы:
+README.md
+pyproject.toml
+version_info.txt
+src/photodoctor/__init__.py
+src/photodoctor/core/analyzer.py
+src/photodoctor/core/eyes.py
+src/photodoctor/core/faces.py
+src/photodoctor/core/precision.py
+src/photodoctor/core/red_eye.py
+src/photodoctor/core/service.py
+src/photodoctor/core/validator.py
+src/photodoctor/core/versioning.py
+src/photodoctor/gui/main_window.py
+tests/test_eyes.py
+tests/test_packaging_files.py
+tests/test_precision_profiles.py
+tests/test_red_eye.py
+tests/test_validator.py
+RELEASE_NOTES_0.5.3.17.txt
+BUILD_VERIFICATION_0.5.3.17.txt
+HOTFIX_MANIFEST_0.5.3.17.txt
+SOURCE_SHA256SUMS.txt

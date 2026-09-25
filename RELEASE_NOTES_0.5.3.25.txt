@@ -1,0 +1,74 @@
+Photo Doctor 0.5.3.25 — Release Notes
+Дата: 2026-09-22
+
+База: Photo Doctor 0.5.3.24 FULL_SOURCE.
+
+Цель релиза
+- Ускорить режимы «Нормально» и особенно «Точно» без снижения рабочего разрешения, ослабления детекторов, Validator или safety-gates.
+- Уменьшить повторные вычисления, лишние полноразмерные временные массивы и неудачный oversubscription CPU.
+- Оставить запас производительности перед будущим AI Super Resolution x2. Сам SR в 0.5.3.25 НЕ добавлялся.
+
+1. Startup / CPU autotune
+- Добавлен splash Photo Doctor с отображением прогресса вместо немого ожидания при первом запуске.
+- При первом запуске выполняется короткий CPU benchmark; профиль сохраняется в QSettings и пересчитывается при изменении hardware/profile version.
+- Analyzer и Validator получили раздельные CPU profiles.
+- Analyzer избегает внешнего параллелизма, если выигрыш неубедителен; Validator отдельно подбирает workers и OpenCV threads.
+- Для тяжёлого NLM/noise validation число одновременно работающих Validator jobs ограничивается консервативно.
+
+2. Cache / I/O / память
+- Исправлен persistent cache исправленного preview: переключение «Исходное ↔ Исправленное» не запускает коррекции повторно.
+- Save-copy переиспользует актуальный исправленный preview.
+- Изменение силы, галочки, области или рецепта корректно инвалидирует preview cache.
+- Анализ текущего файла кэшируется раздельно по precision mode.
+- service/GUI передают уже декодированный LoadedImage там, где повторное чтение файла не требуется.
+- linear_rgb стал lazy; uint8 sRGB→linear использует точную 256-entry LUT.
+- Сокращено время жизни крупных full-frame float/bool массивов; рабочие представления переиспользуются, когда размеры совпадают.
+
+3. Surface / JPEG / Planner
+- Surface connected-component обработка ограничена bbox кандидата вместо повторных full-frame `labels == idx` проходов.
+- Greedy IoU-дедупликация Surface переведена на пакетную NumPy-арифметику при сохранении прежнего порядка и результата.
+- JPEG 8x8 статистика собирается компактнее вместо восьми почти одинаковых full-frame проходов.
+- Local Correction Planner избавлен от Python N×M neighbour/noise-veto циклов; готовый local_plan передаётся в Decision Engine без повторного построения.
+
+4. Faces / Eyes / локальные анализаторы
+- Haar XML classifiers и resized grayscale кэшируются в процессе.
+- Eyes строит grayscale только для face ROI, а не всего 12–24MP кадра.
+- Auto-tone/color не создаёт лишнюю full-frame float32 RGB копию; uint8 median/quantile используют точные histogram helpers.
+- Local sharpness percentile использует точный histogram helper; отвергнутая full-frame convolution версия не возвращалась, поскольку меняла классификации.
+- Noise и rendering-artifact пути раньше освобождают тяжёлые временные массивы.
+
+5. White Balance / Validator
+- Устранён скрытый повторный расчёт auto-tone внутри глобального White Balance.
+- `analyze_white_balance()` принимает уже рассчитанный `auto_tone_profile`; standalone-вызов без профиля сохраняет прежнее поведение.
+- Spatial WB rasterizer переиспользует общую геометрию при независимых channel weights.
+- spatial_neutral_error переиспользует предвычисленные luma/chroma карты.
+- Validator кэширует исходные basic metrics и может параллельно проверять независимые corrections по отдельному CPU profile.
+
+6. Проверки производительности и зависаний
+- Четыре независимых 12MP Precise Analyzer запуска подряд завершились успешно; product hang >90 s не воспроизведён.
+- В текущем Linux/KVM контейнере Analyzer занимал примерно 52.2–53.7 s; абсолютные секунды НЕ являются прогнозом для Windows/Ryzen 7 5700X.
+- Полный analyze_file(): Normal ~31.4 s service / ~36.0 s wall; Precise ~70.3 s service / ~75.3 s wall.
+- Диагностика показала заметный cgroup CPU throttling на тяжёлых Haar/Surface стадиях; варианты общего профиля 3 и 5 OpenCV threads были проверены и отклонены как более медленные в полном pipeline.
+- Любой внешний timeout во время разработки отдельно отличался от product hang и фиксировался с PID/stage/exit-state.
+
+7. Regression / release checks
+- Полная рабочая ветка: 547/547 tests PASS, 61/61 test-файлов, 0 failures, 0 timeout.
+- Release-candidate профиль: 86/86 PASS по packaging/version, Surface, White Balance, Validator, startup/cache и Analyzer equivalence.
+- compileall src + tests: PASS.
+- Surface A/B на реальном 12MP контрольном кадре: одинаковый serialized result SHA, одинаковые candidate_count/boxes/ai_boxes; новая IoU-дедупликация быстрее в прямом сравнении.
+
+Версии:
+- __version__ = 0.5.3.25
+- ALGORITHM_VERSION = 0.5.3.25
+- DECISION_ENGINE_VERSION и MODEL_VERSION не менялись только ради performance-релиза.
+
+Важно:
+- AI Super Resolution x2 остаётся следующим продуктовым этапом и не входит в 0.5.3.25.
+- Windows EXE в Linux-контейнере не собирался; Windows build scripts и metadata включены и проверяются исходниковыми тестами.
+
+8. Дополнительная контрольная A/B-проверка в текущей среде
+- На одном и том же 12MP `perf_12mp.jpg` при `cv2.setNumThreads(4)` чистый baseline 0.5.3.24 занял 94.598 s Analyzer / 104.90 s wall, peak RSS ~1,064,008 KiB.
+- 0.5.3.25 WIP сразу после baseline: 66.804 s Analyzer / 71.91 s wall, peak RSS ~704,084 KiB.
+- Относительный выигрыш Analyzer в этой паре: ~29.4%; peak RSS ниже примерно на 33.8%.
+- Поэтому старые абсолютные ~32 s нельзя использовать как постоянную норму контейнера: текущая CPU-квота/нагрузка заметно меняет абсолютное время, а корректный вывод делается по A/B в одной среде.
+- Реальный Haar A/B на том же кадре: 2 OpenCV threads ~31.28 s, 4 threads ~19.47 s, 5 threads ~19.96 s; 1 thread превысил 70 s watchdog. Для этой 5-vCPU среды 4 threads остаются разумным серийным профилем.

@@ -1,0 +1,44 @@
+Photo Doctor 0.5.8 — Performance / Stability Audit
+
+Цель релиза: ускорить текущую Surface V8 без снижения качества, количества кандидатов, разрешения анализа или защитных порогов.
+
+Принятые оптимизации:
+- batch Context Meta без изменения деревьев/порогов;
+- reuse полноразмерных Surface gray/LAB/eligibility буферов;
+- упрощение лишних float32 round-trip в Local Contrast;
+- reuse одной Surface repair-mask в Validator и before-contrast;
+- summary-only local-contrast probe там, где Validator просит только scalar score;
+- conditional full-frame grayscale для Surface AI при >=8 кандидатах;
+- persistent SQLite analysis cache для неизменённых файлов;
+- cache key учитывает состояние внешних моделей; для больших model-файлов используется дешёвый sample начала/середины/конца, поэтому ручная same-size/same-mtime подмена тоже инвалидирует cache без полного SHA на каждом фото;
+- двухфазный is_current/manual-override lookup без лишнего чтения новых файлов;
+- reuse одного quick-hash внутри кэшированного GUI-open;
+- отложена выбрасываемая pre-AI Surface heal в основном analyze_file пути; standalone Validator сохранён.
+
+Отклонённые оптимизации:
+- увеличение Surface AI batch >16: риск памяти/свопа;
+- matmul/im2col NumPy convolution: 2–4x медленнее и микродрейф;
+- параллельные Haar-cascade families: медленнее;
+- reuse PCA geometry из другой coordinate frame: микродрейф payload.
+
+Проверки эквивалентности:
+- контрольный архивный снимок Normal/Precise;
+- 4K версия;
+- low-contrast gradient/lines;
+- deterministic noise;
+- тяжёлая fabric-like texture;
+- small image;
+- repair masks/healed RGB 45/90/100%;
+- decisions/candidates/status/strength unchanged; только служебные float drift порядка 1e-7 там, где он уже был допустим.
+
+Производительность в текущей тестовой среде:
+- контрольный 4K Normal: 19.64 s baseline -> 16.79 s optimized в соседних процессах (~14.5%); предыдущие серии дают порядок 14–20%.
+- cached GUI open 4K: ~0.073 s median (почти всё JPEG decode).
+- 100-file cached batch rescan: ~0.008 s на уровне batch cache scan.
+- RSS после прогрева стабилен около 147 MiB на серии 250 маленьких synthetic файлов; монотонной per-file утечки не обнаружено.
+
+Версии:
+- Photo Doctor: 0.5.8
+- ALGORITHM_VERSION: 0.5.8-surface-v8
+- Surface: V8 (математика/пороги не урезаны)
+- VALIDATOR_VERSION: 0.2.2

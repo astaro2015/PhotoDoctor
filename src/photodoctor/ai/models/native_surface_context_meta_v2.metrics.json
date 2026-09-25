@@ -1,0 +1,84 @@
+{
+  "model_id": "native_surface_context_meta_v2",
+  "version": "2.1.0-candidate",
+  "features": [
+    "context_contrast",
+    "texture_risk",
+    "aspect",
+    "kind_line",
+    "kind_spot",
+    "kind_irregular",
+    "polarity_bright",
+    "polarity_dark"
+  ],
+  "trees": 500,
+  "max_depth": 4,
+  "min_samples_leaf": 5,
+  "cv_samples": 335,
+  "training_only_samples": 120,
+  "source_groups": 5,
+  "oof_auc": 0.9383589743589744,
+  "oof_average_precision": 0.9445811347186375,
+  "precision_gate": {
+    "threshold": 0.3685,
+    "predictions": 263,
+    "tp": 256,
+    "fp": 7,
+    "precision": 0.973384030418251,
+    "precision_wilson_lower_95": 0.9460890573904849,
+    "recall": 0.9846153846153847,
+    "coverage": 0.7850746268656716,
+    "min_group_precision": 0.868421052631579,
+    "groups": [
+      {
+        "group_id": 0,
+        "predictions": 39,
+        "tp": 39,
+        "fp": 0,
+        "precision": 1.0
+      },
+      {
+        "group_id": 1,
+        "predictions": 108,
+        "tp": 108,
+        "fp": 0,
+        "precision": 1.0
+      },
+      {
+        "group_id": 2,
+        "predictions": 61,
+        "tp": 60,
+        "fp": 1,
+        "precision": 0.9836065573770492
+      },
+      {
+        "group_id": 3,
+        "predictions": 38,
+        "tp": 33,
+        "fp": 5,
+        "precision": 0.868421052631579
+      },
+      {
+        "group_id": 4,
+        "predictions": 17,
+        "tp": 16,
+        "fp": 1,
+        "precision": 0.9411764705882353
+      }
+    ]
+  },
+  "label_feature_leakage_guard": {
+    "excluded": [
+      "candidate_quality",
+      "parallel_neighbor_risk",
+      "response_ratio",
+      "response_drop",
+      "disappearance_coherence",
+      "restored_response_median_near"
+    ],
+    "status": "enforced"
+  },
+  "expert_verified": false,
+  "training_lane": "hard_mining_candidate",
+  "automatic_edits": false
+}

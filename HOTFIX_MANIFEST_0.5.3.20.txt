@@ -1,0 +1,26 @@
+Photo Doctor 0.5.3.20 HOTFIX
+Base: 0.5.3.19 FULL_SOURCE
+Target: 0.5.3.20
+
+Changed files: 11
+README.md
+SOURCE_SHA256SUMS.txt
+pyproject.toml
+src/photodoctor/__init__.py
+src/photodoctor/core/analyzer.py
+src/photodoctor/core/decisions.py
+src/photodoctor/core/validator.py
+src/photodoctor/core/versioning.py
+src/photodoctor/gui/main_window.py
+tests/test_packaging_files.py
+version_info.txt
+
+New files: 5
+BUILD_VERIFICATION_0.5.3.20.txt
+HOTFIX_MANIFEST_0.5.3.20.txt
+RELEASE_NOTES_0.5.3.20.txt
+src/photodoctor/core/local_correction_planner.py
+tests/test_local_correction_planner.py
+
+Deleted files: 0
+(none)

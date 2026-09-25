@@ -1,0 +1,9 @@
+Photo Doctor 0.5.3.1 — startup hotfix
+
+Исправлено:
+- падение при запуске: ImageView.eventFilter мог получить Qt-событие до создания _selection_mode;
+- поля выбора области теперь инициализируются до installEventFilter;
+- eventFilter дополнительно защищён getattr от ранних событий;
+- версия Windows metadata/pyproject/app поднята до 0.5.3.1.
+
+Остальные изменения 0.5.3 (Parameter Recommender v2, schema v8, авторство, иконка) сохранены.

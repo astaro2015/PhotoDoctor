@@ -1,0 +1,18 @@
+Photo Doctor 0.5.4 ALMAZ - Archive Guard + Model Release
+Date: 2026-09-23
+
+Key changes in this build:
+- Archive Chroma Guard for nearly monochrome/sepia archival photos.
+- Local chroma safety detects small green/magenta/blue artifact islands that average-color checks can miss.
+- ALMAZ preserves improved luminance/detail while constraining chroma toward the source on archival photos.
+- Safe fine-tuned ALMAZ model promotion with manifest, SHA-256, parity report, and exam gate validation.
+- Single ALMAZ release-bundle ZIP installation flow.
+- Automatic backup of the currently active model before promotion.
+- Verified rollback support; rollback target is revalidated before restore.
+- ALMAZ GUI buttons for installing a trained model bundle and rolling back a model.
+- Long model operations report current stage and elapsed time.
+
+Verification before packaging:
+- 669/669 tests PASS
+- 82/82 test files PASS
+- compileall PASS

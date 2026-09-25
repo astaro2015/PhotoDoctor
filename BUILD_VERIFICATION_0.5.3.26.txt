@@ -1,0 +1,25 @@
+Photo Doctor 0.5.3.26 — Build Verification
+Date: 2026-09-22
+
+Scope
+- Input formats expanded to JPEG/JPG/JPE/JFIF, PNG, WebP, HEIC/HEIF/HIF, TIFF/TIF, BMP and AVIF.
+- Output formats remain PNG/JPEG only.
+- HEIC/HEIF runtime dependency: pillow-heif >=1.7,<2.
+- Pillow minimum raised to 11.3 for wheel-based AVIF support.
+
+Verification performed in Linux/KVM container
+- pytest --collect-only: 559 tests collected.
+- sequential per-file full suite: 61/61 test files PASS, runner exit 0, timeout 0.
+- compileall src tests: PASS.
+- focused input/packaging/export suite: 62/62 PASS.
+- real decode smoke in this environment: WebP, TIFF/TIF, BMP, JPE/JFIF and AVIF PASS.
+- save/output regression: non-PNG/JPEG requested targets still fall back to PNG.
+- __pycache__: 0 before packaging.
+- .pytest_cache: 0 before packaging.
+- .pyc: 0 before packaging.
+
+HEIC/HEIF limitation of this verification environment
+- pillow-heif 1.7.0 is current and provides CPython 3.12 Windows x86-64 wheels.
+- container network/package installation was unavailable, so an actual HEIC decode could not be executed here.
+- source registration, dependency declaration, runtime environment check and PyInstaller collection are covered by regression tests.
+- final Windows build should include one real iPhone/Android HEIC smoke before calling HEIC runtime verified on that build.
